@@ -2,7 +2,7 @@
 <html>
   <head>
     <title>FoodComm - User Profile</title>
-    <link rel="stylesheet" type="text/css" href="style.css">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
   </head>
   <body>
     <header>
@@ -20,7 +20,7 @@
     <main>
       <section class="profile-header">
         <div class="profile-img">
-          <img src="media/profile.jpg" alt="Profile Image">
+          <img src="{{ url_for('static', filename='media/profile.jpg') }}" alt="Profile Image">
         </div>
         <div class="profile-info">
           <h1>Jane Doe</h1>
@@ -32,7 +32,7 @@
         <ul>
           <li>
             <div class="review-img">
-              <img src="media/rest1.jpg" alt="Restaurant Image">
+              <img src="{{ url_for('static', filename='media/rest1.jpg') }}" alt="Restaurant Image">
             </div>
             <div class="review-info">
               <h3>Restaurant Name</h3>
@@ -41,7 +41,7 @@
           </li>
           <li>
             <div class="review-img">
-              <img src="media/rest2.jpg" alt="Restaurant Image">
+              <img src="{{ url_for('static', filename='media/rest2.jpg') }}" alt="Restaurant Image">
             </div>
             <div class="review-info">
               <h3>Restaurant Name</h3>
@@ -50,7 +50,7 @@
           </li>
           <li>
             <div class="review-img">
-              <img src="media/rest3.jpg" alt="Restaurant Image">
+              <img src="{{ url_for('static', filename='media/rest3.jpg') }}" alt="Restaurant Image">
             </div>
             <div class="review-info">
               <h3>Restaurant Name</h3>
