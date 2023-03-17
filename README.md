@@ -41,10 +41,14 @@ Rating
 Relationship
 
 Customer -> Made -> Rating
+
 Restaurant -> Review -> Rating
 
 Customer -> Friends -> Customer (Try to avoid duplicate)
 
 Restaurant -> Location -> City
+
 Owner -> Owns -> Restaurant
+
 Customer -> Likes -> Restaurant
+
