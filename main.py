@@ -29,7 +29,7 @@ def register():
             flash('Logged in.')
             return redirect(url_for('index'))
 
-    return render_template('register.html')
+    return render_template('signUp.html')
 
 
 @flask_app.route('/login')
