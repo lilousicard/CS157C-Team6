@@ -11,6 +11,7 @@
 Neo4j (https://neo4j.com/)
  
 Node Type
+
 Customer
 - Age: Int
 - Email: String
