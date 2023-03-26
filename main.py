@@ -10,7 +10,6 @@ flask_app.secret_key = os.urandom(24)
 def index():
     return render_template('index.html')
 
-
 @flask_app.route('/register', methods=['GET', 'POST'])
 def register():
     if request.method == 'POST':
@@ -23,7 +22,7 @@ def register():
         elif len(password) < 5:
             flash('Your password must be at least 5 characters.')
         elif not User(username).register(password):
-            flash('A user with that username already exists.')
+            flash('Username already exists.')
         else:
             session['username'] = username
             flash('Logged in.')
