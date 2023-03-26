@@ -22,7 +22,7 @@ def register():
         elif len(password) < 5:
             flash('Your password must be at least 5 characters.')
         elif not User(username).register(password):
-            flash('Username already exists.')
+            flash(' Username already exists.')
         else:
             session['username'] = username
             flash('Logged in.')
