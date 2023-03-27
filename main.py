@@ -1,4 +1,4 @@
-from models import User
+from models import Customer
 
 from flask import Flask, request, render_template, flash, session, redirect, url_for
 import os
@@ -15,13 +15,19 @@ def register():
     if request.method == 'POST':
         username = request.form['username']
         password = request.form['password']
-        print(username, password)
+        params = {
+            'username' : username,
+            'password' : password,
+            'gender' : request.form['gender'],
+            'email' : request.form['email'],
+            'age' : request.form['age'],
+        }
 
         if len(username) < 1:
             flash('Your username must be at least one character.')
         elif len(password) < 5:
             flash('Your password must be at least 5 characters.')
-        elif not User(username).register(password):
+        elif not Customer(params).register():
             flash(' Username already exists.')
         else:
             session['username'] = username
@@ -38,7 +44,7 @@ def login():
 
 def main():
     print("Hello World!")
-    flask_app.run(debug=True)
+    flask_app.run(port=5000, debug=True)
 
 
 
