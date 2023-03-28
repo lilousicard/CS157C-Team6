@@ -58,11 +58,10 @@ h1 {
 }
 
 .comment {
-	margin-bottom: 20px;
 }
 
 .comment h3 {
-	margin: 0;
+	margin: 20px;
 }
 
 .container {
