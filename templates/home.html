@@ -7,58 +7,62 @@
 </head>
 <body>
 	<header>
-		<h1>FoodComm</h1>
-		<form method="post">
-        	<input type="submit" value="Login" name="Login"/>
-        	<input type="submit" value="SignUp" name="SignUp" />
-        	<input type="submit" value="Account" name="Account"/>
-    	</form>
+		<div class="logo">
+			<a href="/">
+				<h1>FoodComm</h1>
+			</a>
+		</div>
+		
+		<form class="header-form" method="get" action="">
+			<button type="submit" formaction="/signup">Sign up</button>
+			<button type="submit" formaction="/login">Login</button>
+			<button type="submit" formaction="/account">Account</button>
+		</form>
 	</header>
 	<main>
 		<section class="restaurant-list">
 			<div class="container">
 		<div class="item">
-			<a href="NewPage.html"><img src="picture1.jpg" alt="Picture 1"></a>
-			<a href="NewPage.html">Picture 1</a>
+			<a href="/restaurant"><img src={{ url_for('static', filename='media/rest1.jpg') }} alt="Picture 1" width="200" height="200" ></a>
+			<a href="/restaurant">Picture 1</a>
 		</div>
 		<div class="item">
-			<a href="NewPage.html"><img src="picture2.jpg" alt="Picture 2"></a>
-			<a href="NewPage.html">Picture 2</a>
+			<a href="/restaurant"><img src={{ url_for('static', filename='media/rest2.jpg') }} alt="Picture 2" width="200" height="200"></a>
+			<a href="/restaurant">Picture 2</a>
 		</div>
 		<div class="item">
-			<a href="NewPage.html"><img src="picture3.jpg" alt="Picture 3"></a>
-			<a href="NewPage.html">Picture 3</a>
+			<a href="/restaurant"><img src={{ url_for('static', filename='media/rest3.jpg') }} alt="Picture 3" width="200" height="200"></a>
+			<a href="/restaurant">Picture 3</a>
 		</div>
 		<div class="item">
-			<a href="NewPage.html"><img src="picture4.jpg" alt="Picture 4"></a>
-			<a href="NewPage.html">Picture 4</a>
+			<a href="/restaurant"><img src={{ url_for('static', filename='media/rest3.jpg') }} alt="Picture 4" width="200" height="200"></a>
+			<a href="/restaurant">Picture 4</a>
 		</div>
 		<div class="item">
-			<a href="NewPage.html"><img src="picture5.jpg" alt="Picture 5"></a>
-			<a href="NewPage.html">Picture 5</a>
+			<a href="/restaurant"><img src={{ url_for('static', filename='media/rest3.jpg') }} alt="Picture 5" width="200" height="200"></a>
+			<a href="/restaurant">Picture 5</a>
 		</div>
 		<div class="item">
-			<a href="NewPage.html"><img src="picture6.jpg" alt="Picture 6"></a>
-			<a href="NewPage.html">Picture 6</a>
+			<a href="/restaurant"><img src={{ url_for('static', filename='media/rest3.jpg') }} alt="Picture 6" width="200" height="200"></a>
+			<a href="/restaurant">Picture 6</a>
 		</div>
 		<div class="item">
-			<a href="NewPage.html"><img src="picture7.jpg" alt="Picture 7"></a>
-			<a href="NewPage.html">Picture 7</a>
+			<a href="/restaurant"><img src={{ url_for('static', filename='media/rest3.jpg') }} alt="Picture 7" width="200" height="200"></a>
+			<a href="/restaurant">Picture 7</a>
 		</div>
 		<div class="item">
-			<a href="NewPage.html"><img src="picture8.jpg" alt="Picture 8"></a>
-			<a href="NewPage.html">Picture 8</a>
+			<a href="/restaurant"><img src={{ url_for('static', filename='media/rest3.jpg') }} alt="Picture 8" width="200" height="200"></a>
+			<a href="/restaurant">Picture 8</a>
 		</div>
 		<div class="item">
-			<a href="NewPage.html"><img src="picture9.jpg" alt="Picture 9"></a>
-			<a href="NewPage.html">Picture 9</a>
+			<a href="/restaurant"><img src={{ url_for('static', filename='media/rest3.jpg') }} alt="Picture 9" width="200" height="200"></a>
+			<a href="/restaurant">Picture 9</a>
 		</div>
 		<div class="item">
-			<a href="NewPage.html"><img src="picture10.jpg" alt="Picture 10"></a>
-			<a href="NewPage.html">Picture 10</a>
+			<a href="/restaurant"><img src={{ url_for('static', filename='media/rest3.jpg') }} alt="Picture 10" width="200" height="200"></a>
+			<a href="/restaurant">Picture 10</a>
 		</div>
 	</div>
-</body>
 		</section>
 		<section class="recent-comments">
 			<h2>Recent Comments</h2>

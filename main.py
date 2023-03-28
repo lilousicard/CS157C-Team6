@@ -32,9 +32,30 @@ def register():
     return render_template('signUp.html')
 
 
+
+#*******************************************
+
+
+@flask_app.route('/restaurant')
+def restaurant():
+    return render_template('restaurant.html')
+def home():
+    return render_template('home.html')
+
+@flask_app.route('/signup')
+def signup():
+    return render_template('signup.html')
+
 @flask_app.route('/login')
 def login():
     return render_template('login.html')
+
+@flask_app.route('/account')
+def account():
+    return render_template('account.html')
+
+
+#*******************************************
 
 
 def main():
