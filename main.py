@@ -21,6 +21,7 @@ def register():
             'gender' : request.form['gender'],
             'email' : request.form['email'],
             'age' : request.form['age'],
+            'restaurant_owner' : request.form.get('restaurant')
         }
 
         if len(username) < 1:
@@ -44,7 +45,7 @@ def login():
 
 def main():
     print("Hello World!")
-    flask_app.run(port=5000, debug=True)
+    flask_app.run(port=5001, debug=True)
 
 
 
