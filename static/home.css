@@ -1,0 +1,59 @@
+header {
+	background-color: #333;
+	color: #d9840d;
+	padding: 10px;
+}
+
+h1 {
+	margin: 0;
+}
+
+.restaurant-list {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-between;
+	margin: 20px;
+}
+
+.restaurant {
+	flex-basis: 30%;
+	margin-bottom: 20px;
+}
+
+.restaurant img {
+	width: 100%;
+}
+
+.recent-comments {
+	margin: 20px;
+}
+
+.comment {
+	margin-bottom: 20px;
+}
+
+.comment h3 {
+	margin: 0;
+}
+
+.container {
+			overflow-x: scroll;
+			white-space: nowrap;
+		}
+		.item {
+			display: inline-block;
+			margin-right: 10px;
+			width: 200px;
+			height: 200px;
+			background-color: #f27602;
+			text-align: center;
+			line-height: 200px;
+			font-size: 20px;
+		}
+		.item a {
+			display: block;
+			color: #333;
+			text-decoration: none;
+			font-weight: bold;
+			font-size: 16px;
+		}

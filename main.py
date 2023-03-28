@@ -8,7 +8,7 @@ flask_app.secret_key = os.urandom(24)
 
 @flask_app.route('/')
 def index():
-    return render_template('index.html')
+    return render_template('home.html')
 
 
 @flask_app.route('/register', methods=['GET', 'POST'])
