@@ -42,6 +42,19 @@ def register():
 def login():
     return render_template('login.html')
 
+@flask_app.route('/review')
+def review():
+    return render_template('review.html')
+
+@flask_app.route('/editForm')
+def restaurantForm():
+    return render_template('restaurantForm.html')
+
+@flask_app.route('/otherProfile')
+def otherPeople():
+    return render_template('otherProfile.html')
+
+
 
 def main():
     print("Hello World!")
