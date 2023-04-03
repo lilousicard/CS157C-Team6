@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+  <head>
+      <title>FoodComm - Review</title>
+      <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='restaurantForm.css') }}">
+  </head>
+
+  <body>
+    <header>
+      <div class="logo">
+      <a href="/">
+        <h1>FoodComm</h1>
+      </a>
+     </div>
+    </header>
+    <form action="" method="post">
+      <div class="form-group">
+        <label for="Name">Name of the restaurant:</label>
+        <textarea id="name" name="name" rows="1" cols="10"></textarea>
+      </div>
+      <div class="form-group">
+        <label for="Type">Type of food:</label>
+        <textarea id="type" name="type" rows="1" cols="10"></textarea>
+      </div>
+      <div class = "form-group">
+        <label for="city">City:</label>
+        <select name="city" id="city">
+          <option value="Montreal">Montreal</option>
+          <option value="Palo Alto">Palo Alto</option>
+          <option value="New York City">New York City</option>
+          <option value="San Jose">San Jose</option>
+          <option value="San Francisco">San Francisco</option>
+          <option value="Boston">Boston</option>
+        </select>
+      </div>
+      <button type="submit">Submit</button>
+    </form>
+  </body>
+</html>
+

@@ -1,4 +1,4 @@
-from models import User
+from models import Customer
 
 from flask import Flask, request, render_template, flash, session, redirect, url_for
 import os
@@ -10,20 +10,26 @@ flask_app.secret_key = os.urandom(24)
 def index():
     return render_template('home.html')
 
-
 @flask_app.route('/register', methods=['GET', 'POST'])
 def register():
     if request.method == 'POST':
         username = request.form['username']
         password = request.form['password']
-        print(username, password)
+        params = {
+            'username' : username,
+            'password' : password,
+            'gender' : request.form['gender'],
+            'email' : request.form['email'],
+            'age' : request.form['age'],
+            'restaurant_owner' : request.form.get('restaurant')
+        }
 
         if len(username) < 1:
             flash('Your username must be at least one character.')
         elif len(password) < 5:
             flash('Your password must be at least 5 characters.')
-        elif not User(username).register(password):
-            flash('A user with that username already exists.')
+        elif not Customer(params).register():
+            flash(' Username already exists.')
         else:
             session['username'] = username
             flash('Logged in.')
@@ -50,6 +56,7 @@ def signup():
 def login():
     return render_template('login.html')
 
+
 @flask_app.route('/account')
 def account():
     return render_template('account.html')
@@ -58,14 +65,28 @@ def account():
 @flask_app.route('/search')
 def search():
     return render_template('search.html')
+    
+@flask_app.route('/review')
+def review():
+    return render_template('review.html')
 
+@flask_app.route('/editForm')
+def restaurantForm():
+    return render_template('restaurantForm.html')
+
+@flask_app.route('/otherProfile')
+def otherPeople():
+    return render_template('otherProfile.html')
 
 #*******************************************
 
 
+
+
+
 def main():
     print("Hello World!")
-    flask_app.run(debug=True)
+    flask_app.run(port=5001, debug=True)
 
 
 

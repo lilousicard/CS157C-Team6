@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+  <head>
+      <title>FoodComm - Review</title>
+      <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='review.css') }}">
+  </head>
+
+  <body>
+    <header>
+      <div class="logo">
+      <a href="/">
+        <h1>FoodComm</h1>
+      </a>
+     </div>
+    </header>
+    <form action="" method="post">
+      <div class="form-group">
+        <label for="review">Review:</label>
+        <textarea id="review" name="review" rows="4" cols="50"></textarea>
+      </div>
+      <div class="form-group">
+        <label for="rating">Rating:</label>
+        <input type="number" id="rating" name="rating" min="0" max="5">
+      </div>
+      <button type="submit">Submit</button>
+    </form>
+  </body>
+</html>
