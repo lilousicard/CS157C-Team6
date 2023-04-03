@@ -55,6 +55,11 @@ def account():
     return render_template('account.html')
 
 
+@flask_app.route('/search')
+def search():
+    return render_template('search.html')
+
+
 #*******************************************
 
 
