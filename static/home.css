@@ -1,0 +1,85 @@
+header {
+	background-color: #ea8c55;
+	display: flex;
+	align-items: center;
+	padding: 10px;
+}
+
+body {
+	background-color: white;
+	color: black;
+	font-size: 1.2em;
+	font-family: Arial, sans-serif;
+	margin: 0;
+	padding: 0;
+}
+h1 {
+	margin: 0;
+}
+
+.header-form {
+	flex: 1;
+	text-align: right;
+}
+
+.header-form button {
+	background-color: #fff;
+	border: none;
+	padding: 8px 12px;
+	font-size: 16px;
+	color: #333;
+	cursor: pointer;
+	margin-left: 10px;
+}
+
+.header-form button:hover {
+	background-color: #333;
+	color: #fff;
+}
+
+.restaurant-list {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-between;
+	margin: 20px;
+}
+
+.restaurant {
+	flex-basis: 30%;
+	margin-bottom: 20px;
+}
+
+.restaurant img {
+	width: 100%;
+}
+
+.recent-comments {
+	margin: 20px;
+}
+
+.comment {
+}
+
+.comment h3 {
+	margin: 20px;
+}
+
+.container {
+			overflow-x: scroll;
+			white-space: nowrap;
+		}
+		.item {
+			display: inline-block;
+			margin-right: 10px;
+			background-color: white;
+			text-align: center;
+			line-height: 50px;
+			font-size: 10px;
+		}
+		.item a {
+			display: block;
+			color: black;
+			text-decoration: none;
+			font-weight: bold;
+			font-size: 16px;
+		}

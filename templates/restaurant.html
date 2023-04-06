@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>FoodComm</title>
+	<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='restaurant.css') }}">
+</head>
+<body>
+	<header>
+		<div class="logo">
+			<a href="/">
+				<h1>FoodComm</h1>
+			</a>
+		</div>
+		
+		<form class="header-form" method="get" action="">
+			<button type="submit" formaction="/signup">Sign up</button>
+			<button type="submit" formaction="/login">Login</button>
+			<button type="submit" formaction="/account">Account</button>
+		</form>
+	</header>
+	<main>
+		<div class="title-container">
+			<h2 class="page-title">Restaurant Info Page</h2>
+		</div>
+		
+		<section class="restaurant-info">
+			<img src="{{ url_for('static', filename='media/rest3.jpg') }}" alt="Restaurant Image">
+			<h2>Name of the Restaurant</h2>
+			<p class="restaurant-details">City: <span class="detail">City name</span></p>
+			<p class="restaurant-details">Rate: <span class="detail">4.5</span></p>
+			<p class="restaurant-details">Review: <span class="detail">"Amazing food and great service!"</span></p>
+			<p class="restaurant-details">Review: <span class="detail">"Loved it"</span></p>
+		</section>
+
+	</main>
+</body>
+</html>
+

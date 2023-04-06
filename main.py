@@ -8,7 +8,7 @@ flask_app.secret_key = os.urandom(24)
 
 @flask_app.route('/')
 def index():
-    return render_template('index.html')
+    return render_template('home.html')
 
 @flask_app.route('/register', methods=['GET', 'POST'])
 def register():
@@ -38,10 +38,34 @@ def register():
     return render_template('signUp.html')
 
 
+
+#*******************************************
+
+
+@flask_app.route('/restaurant')
+def restaurant():
+    return render_template('restaurant.html')
+def home():
+    return render_template('home.html')
+
+@flask_app.route('/signup')
+def signup():
+    return render_template('signup.html')
+
 @flask_app.route('/login')
 def login():
     return render_template('login.html')
 
+
+@flask_app.route('/account')
+def account():
+    return render_template('account.html')
+
+
+@flask_app.route('/search')
+def search():
+    return render_template('search.html')
+    
 @flask_app.route('/review')
 def review():
     return render_template('review.html')
@@ -53,6 +77,10 @@ def restaurantForm():
 @flask_app.route('/otherProfile')
 def otherPeople():
     return render_template('otherProfile.html')
+
+#*******************************************
+
+
 
 
 

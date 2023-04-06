@@ -4,7 +4,19 @@ body {
 
 header {
   background-color: #ea8c55;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+  display: flex;
+  align-items: left;
+  padding: 10px;
+}
+.logo {
+  flex: 1;
+}
+
+.logo h1 {
+  margin: 0;
+  font-size: 32px;
+  color:  white;
+  text-align: left;
 }
 
 .container {

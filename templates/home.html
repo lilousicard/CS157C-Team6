@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>FoodComm</title>
+	<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='home.css') }}">
+</head>
+<body>
+	<header>
+		<div class="logo">
+			<a href="/">
+				<h1>FoodComm</h1>
+			</a>
+		</div>
+		
+		<form class="header-form" method="get" action="">
+			<button type="submit" formaction="/signup">Sign up</button>
+			<button type="submit" formaction="/login">Login</button>
+			<button type="submit" formaction="/account">Profile</button>
+		</form>
+	</header>
+	<main>
+		<section class="restaurant-list">
+			<div class="container">
+		<div class="item">
+			<a href="/restaurant"><img src={{ url_for('static', filename='media/rest1.jpg') }} alt="Picture 1" width="200" height="200" ></a>
+			<a href="/restaurant">Picture 1</a>
+		</div>
+		<div class="item">
+			<a href="/restaurant"><img src={{ url_for('static', filename='media/rest2.jpg') }} alt="Picture 2" width="200" height="200"></a>
+			<a href="/restaurant">Picture 2</a>
+		</div>
+		<div class="item">
+			<a href="/restaurant"><img src={{ url_for('static', filename='media/rest3.jpg') }} alt="Picture 3" width="200" height="200"></a>
+			<a href="/restaurant">Picture 3</a>
+		</div>
+		<div class="item">
+			<a href="/restaurant"><img src={{ url_for('static', filename='media/rest3.jpg') }} alt="Picture 4" width="200" height="200"></a>
+			<a href="/restaurant">Picture 4</a>
+		</div>
+		<div class="item">
+			<a href="/restaurant"><img src={{ url_for('static', filename='media/rest3.jpg') }} alt="Picture 5" width="200" height="200"></a>
+			<a href="/restaurant">Picture 5</a>
+		</div>
+		<div class="item">
+			<a href="/restaurant"><img src={{ url_for('static', filename='media/rest3.jpg') }} alt="Picture 6" width="200" height="200"></a>
+			<a href="/restaurant">Picture 6</a>
+		</div>
+		<div class="item">
+			<a href="/restaurant"><img src={{ url_for('static', filename='media/rest3.jpg') }} alt="Picture 7" width="200" height="200"></a>
+			<a href="/restaurant">Picture 7</a>
+		</div>
+		<div class="item">
+			<a href="/restaurant"><img src={{ url_for('static', filename='media/rest3.jpg') }} alt="Picture 8" width="200" height="200"></a>
+			<a href="/restaurant">Picture 8</a>
+		</div>
+		<div class="item">
+			<a href="/restaurant"><img src={{ url_for('static', filename='media/rest3.jpg') }} alt="Picture 9" width="200" height="200"></a>
+			<a href="/restaurant">Picture 9</a>
+		</div>
+		<div class="item">
+			<a href="/restaurant"><img src={{ url_for('static', filename='media/rest3.jpg') }} alt="Picture 10" width="200" height="200"></a>
+			<a href="/restaurant">Picture 10</a>
+		</div>
+	</div>
+		</section>
+		<section class="recent-comments">
+			<h2>Recent Comments</h2>
+			<article class="comment">
+				<h3>Comment 1</h3>
+				<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam in metus vel nisi pulvinar pharetra. Aenean non enim tincidunt, aliquet nisi vitae, luctus mauris. Nam euismod mollis nunc ac congue. Ut sit amet dapibus justo. Sed porta tellus vel malesuada maximus.</p>
+			</article>
+			<article class="comment">
+				<h3>Comment 2</h3>
+				<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam in metus vel nisi pulvinar pharetra. Aenean non enim tincidunt, aliquet nisi vitae, luctus mauris. Nam euismod mollis nunc ac congue. Ut sit amet dapibus justo. Sed porta tellus vel malesuada maximus.</p>
+			</article>
+			<article class="comment">
+				<h3>Comment 3</h3>
+				<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam in metus vel nisi pulvinar pharetra. Aenean non enim tincidunt, aliquet nisi vitae, luctus mauris. Nam euismod mollis nunc ac congue. Ut sit amet dapibus justo. Sed porta tellus vel malesuada maximus.</p>
+			</article>
+		</section>
+	</main>
+</body>
+</html>
+
