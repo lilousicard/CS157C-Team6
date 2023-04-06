@@ -15,24 +15,22 @@ def index():
 @flask_app.route('/register', methods=['GET', 'POST'])
 def register():
     if request.method == 'POST':
-        username = request.form['username']
+        email = request.form['email']
         password = request.form['password']
         params = {
+            'name': request.form['name'],
             'password': password,
             'gender': request.form['gender'],
-            'email': request.form['email'],
             'age': request.form['age'],
             'restaurant_owner': request.form.get('restaurant')
         }
 
-        if len(username) < 1:
-            flash('Your username must be at least one character.')
-        elif len(password) < 5:
+        if len(password) < 5:
             flash('Your password must be at least 5 characters.')
-        elif not Customer(username).register(params):
+        elif not Customer(email).register(params):
             flash(' Username already exists.')
         else:
-            session['user'] = username
+            session['user'] = email
             flash('Logged in.')
             return redirect(url_for('index'))
 
@@ -53,13 +51,12 @@ def signup():
 @flask_app.route('/login', methods=['GET', 'POST'])
 def login():
     if request.method == 'POST':
-        username = request.form['username']
+        email = request.form['email']
         password = request.form['password']
-        print(username, password)
-        if not Customer(username).verify_password(password):
+        if not Customer(email).verify_password(password):
             flash('Invalid login.')
         else:
-            session['user'] = username
+            session['user'] = email
             flash('Logged in.')
             return redirect(url_for('index'))
 
@@ -76,7 +73,6 @@ def search():
 
 @flask_app.route('/logout')
 def logout():
-    session.pop('username', None)
     session.pop('user', None)
     flash('Logged out.')
     return redirect(url_for('index'))
@@ -84,8 +80,8 @@ def logout():
 
 @flask_app.route('/add_friend', methods=["GET", "POST"])
 def add_friend():
-    username = session['user']
-    Customer(username).add_friend("bob")
+    email = session['user']
+    Customer(email).add_friend("bob")
     return redirect(url_for('index'))
 
 @flask_app.route('/review')
