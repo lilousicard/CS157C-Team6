@@ -29,6 +29,11 @@ username bob in my test DB.
 Im still working on how to get the correct from information from the
 otherprofile page.
 
+Im not 100% sure how sessions work so I will have to look into that. Right now
+when adding a friend im using the currently logged in user to create a
+relationship(ie: current user = session['user']). not sure if this expires if a
+new page is loaded etc
+
 
 3. I deleted the original register.html
 
