@@ -1,19 +1,47 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>FoodComm - Register</title>
-    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
+    <title>FoodComm Sign Up</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styleSignUp.css') }}">
   </head>
   <body>
     <div class="container">
-      <h1>Register</h1>
       <form action="{{url_for('register') }}" method="post">
-        <label for="username">Username:</label>
-        <input type="text" id="username" name="username" placeholder="Enter your username">
-        <label for="password">Password:</label>
-        <input type="password" id="password" name="password" placeholder="Enter your password">
-        <button type="submit">Register</button>
+        <h1>Sign Up</h1>
+        <label for="email"><b>Email</b></label>
+        <input id="email" type="email" placeholder="Enter Email" name="email"
+        required>
+        <label for="name"><b>Name</b></label>
+        <input id="name" type="text" placeholder="Enter Name"
+               name="name"
+               required>
+        <label for="age"><b>Age</b></label>
+        <input id="age" type="number" placeholder="Enter Age" name="age"
+        required>
+        <label for="gender"><b>Gender</b></label>
+        <select id="gender" name="gender" required>
+          <option value="">Select Gender</option>
+          <option value="male">Male</option>
+          <option value="female">Female</option>
+          <option value="other">Other</option>
+        </select>
+        <label for="password"><b>Password</b></label>
+        <input
+                id="password" type="password" placeholder="Enter Password"
+        name="password"
+               required>
+        <label for="repassword"><b>Re-enter Password</b></label>
+        <input id="repassword" type="password" placeholder="Re-enter Password"
+               name="repassword" required>
+        <label for="picture"><b>Picture</b></label>
+        <input id="picture" type="file" placeholder="Upload Picture"
+        name="picture"
+               accept="image/*" required>
+        <label for="restaurant"><b>Are you a restaurant owner?</b></label>
+        <input id="restaurant" type="checkbox" name="restaurant" value="yes">
+        <button type="submit">Sign Up</button>
       </form>
     </div>
   </body>
 </html>
+
