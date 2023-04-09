@@ -1,11 +1,12 @@
 {% extends "base.html" %}
 {% block head %}
   {{ super() }}
-    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='base.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styleSignUp.css') }}">
 {% endblock %}
 {% block content %}
-    <div class="container">
-      <form action="{{url_for('register') }}" method="post">
+    <div class="containers">
+      <form class="register" action="{{url_for('register') }}" method="post">
         <h1>Sign Up</h1>
         <label for="email"><b>Email</b></label>
         <input id="email" type="email" placeholder="Enter Email" name="email"

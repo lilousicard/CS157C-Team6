@@ -1,0 +1,28 @@
+header {
+	background-color: #ea8c55;
+	display: flex;
+	align-items: center;
+	padding: 10px;
+}
+
+.header-form {
+	flex: 1;
+	text-align: right;
+	background-color: #ea8c55;
+}
+
+.header-form button {
+	background-color: #fff;
+	border: none;
+	padding: 8px 12px;
+	font-size: 16px;
+	color: #333;
+	cursor: pointer;
+	margin-left: 10px;
+}
+
+.header-form button:hover {
+	background-color: #333;
+	color: #fff;
+}
+

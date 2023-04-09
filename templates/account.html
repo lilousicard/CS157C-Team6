@@ -1,26 +1,9 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <title>FoodComm - User Profile</title>
-    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
-  </head>
-  <body>
-    <header>
-     <div class="logo">
-      <a href="/">
-        <h1>FoodComm</h1>
-      </a>
-     </div>
-      <nav>
-        <ul>
-            <li><a href="#">Home</a></li>
-            <li><a href="#">Profile</a></li>
-            <li><a href="#">Friends</a></li>
-            <li><a href="#">Reviews</a></li>
-            <li><a href="#">Logout</a></li>
-        </ul>
-      </nav>
-    </header>
+{% extends "base.html" %}
+{% block head %}
+  {{ super() }}
+  <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
+{% endblock %}
+{% block content %}
     <main>
       <section class="profile-header">
         <div class="profile-img">
@@ -64,5 +47,4 @@
         </ul>
       </section>
     </main>
-  </body>
-</html>
+{% endblock %}

@@ -1,6 +1,7 @@
 {% extends "base.html" %}
 {% block head %}
 	{{ super() }}
+	<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='base.css') }}">
 	<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='restaurant.css') }}">
 {% endblock %}
 {% block content %}
@@ -17,7 +18,5 @@
 			<p class="restaurant-details">Review: <span class="detail">"Amazing food and great service!"</span></p>
 			<p class="restaurant-details">Review: <span class="detail">"Loved it"</span></p>
 		</section>
-
 	</main>
 {% endblock %}
-

@@ -1,19 +1,10 @@
-<!DOCTYPE html>
-<html>
-  <head>
-      <title>FoodComm - Review</title>
+{% extends "base.html" %}
+{% block head %}
+  {{ super() }}
       <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='restaurantForm.css') }}">
-  </head>
-
-  <body>
-    <header>
-      <div class="logo">
-      <a href="/">
-        <h1>FoodComm</h1>
-      </a>
-     </div>
-    </header>
-    <form action="" method="post">
+{% endblock %}
+{% block content %}
+    <form class= "editForm" action="" method="post">
       <div class="form-group">
         <label for="Name">Name of the restaurant:</label>
         <textarea id="name" name="name" rows="1" cols="10"></textarea>
@@ -33,8 +24,7 @@
           <option value="Boston">Boston</option>
         </select>
       </div>
+      <br><br>
       <button type="submit">Submit</button>
     </form>
-  </body>
-</html>
-
+{% endblock %}
