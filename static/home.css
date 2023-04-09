@@ -1,10 +1,3 @@
-header {
-	background-color: #ea8c55;
-	display: flex;
-	align-items: center;
-	padding: 10px;
-}
-
 body {
 	background-color: white;
 	color: black;
@@ -15,26 +8,6 @@ body {
 }
 h1 {
 	margin: 0;
-}
-
-.header-form {
-	flex: 1;
-	text-align: right;
-}
-
-.header-form button {
-	background-color: #fff;
-	border: none;
-	padding: 8px 12px;
-	font-size: 16px;
-	color: #333;
-	cursor: pointer;
-	margin-left: 10px;
-}
-
-.header-form button:hover {
-	background-color: #333;
-	color: #fff;
 }
 
 .restaurant-list {

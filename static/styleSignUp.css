@@ -19,7 +19,7 @@ header {
   text-align: left;
 }
 
-.container {
+.containers {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -59,7 +59,7 @@ input[type="file"] {
   box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
 }
 
-button[type="submit"] {
+.containers button[type="submit"] {
   background-color: #ea8c55;
   color: #fff;
   border: none;

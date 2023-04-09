@@ -1,18 +1,10 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <title>FoodComm - Login</title>
+{% extends "base.html" %}
+{% block head %}
+  {{ super() }}
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
-  </head>
-  <body>
-    <header>
-      <div class="logo">
-      <a href="/">
-        <h1>FoodComm</h1>
-      </a>
-     </div>
-    </header>
-    <div class="container">
+ {% endblock %}
+{% block content %}
+    <div class="containers">
       <h1>Login</h1>
       <form>
         <label for="username">Username:</label>
@@ -23,5 +15,4 @@
       </form>
       <p>Don't have an account? <a href="#">Sign up here</a></p>
     </div>
-  </body>
-</html>
+{% endblock %}

@@ -1,18 +1,10 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <title>FoodComm Sign Up</title>
+{% extends "base.html" %}
+{% block head %}
+  {{ super() }}
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styleSignUp.css') }}">
-  </head>
-  <body>
-    <header>
-    <div class="logo">
-      <a href="/">
-        <h1>FoodComm</h1>
-      </a>
-    </div>
-  </header>
-    <div class="container">
+{% endblock %}
+{% block content %}
+    <div class="containers">
       <form action="#" method="post">
         <h1>Sign Up</h1>
         <label for="email"><b>Email</b></label>
@@ -39,6 +31,4 @@
         <button type="submit">Sign Up</button>
       </form>
     </div>
-  </body>
-</html>
-
+{% endblock %}

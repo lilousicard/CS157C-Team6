@@ -137,7 +137,7 @@ body {
     color: #666;
   }
   
-  .container {
+  .containers {
     margin: 100px auto;
     padding: 20px;
     background-color: #fff;
@@ -166,7 +166,7 @@ body {
     border: none;
   }
   
-  button {
+  .containers button {
     background-color: #ea8c55;
     color: white;
     padding: 10px;
