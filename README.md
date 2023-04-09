@@ -9,6 +9,8 @@
 ## **NoSql Database**
 
 Neo4j (https://neo4j.com/)
+
+<img width="764" alt="Screenshot 2023-04-07 at 12 17 02 PM" src="https://user-images.githubusercontent.com/11585585/230664884-a2bc9c0b-74ab-4ea9-ac47-5e16281ffc3c.png">
  
 Node Type
 
@@ -52,4 +54,6 @@ Restaurant -> Location -> City
 Owner -> Owns -> Restaurant
 
 Customer -> Likes -> Restaurant
+
+
 
