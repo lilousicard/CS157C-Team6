@@ -7,7 +7,10 @@
 {% block content %}
     <div class="login-box">
     <h2>Login</h2>
-    <form>
+        {% if error %}
+        <p>Invalid Username or password</p>
+        {% endif %}
+    <form action="{{url_for('login')}}"  method = "post">
       <div class="user-box">
         <input type="email" name="email" required="">
         <label>Email</label>

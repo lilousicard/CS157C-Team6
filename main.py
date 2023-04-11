@@ -1,9 +1,9 @@
 import models
 from Customer import Customer
 
-
 from flask import Flask, request, render_template, flash, session,  \
     redirect, url_for
+
 import os
 flask_app = Flask(__name__)
 flask_app.secret_key = os.urandom(24)
@@ -55,6 +55,7 @@ def login():
         password = request.form['password']
         if not Customer(email).verify_password(password):
             flash('Invalid login.')
+            return render_template('login.html', error=True)
         else:
             session['user'] = email
             flash('Logged in.')
@@ -98,6 +99,7 @@ def review():
     return render_template('review.html')
 
 
+#should be accessible to only owners
 @flask_app.route('/editForm')
 def restaurantForm():
     return render_template('restaurantForm.html')
