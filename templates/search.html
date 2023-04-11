@@ -7,7 +7,7 @@
 	<main>
 		<div class="search-box">
 		<h2>Search</h2>	
-			<form class="search-form" method="get" action="">
+			<form class="search-form" method="post" action="{{ url_for('search') }}">
 				<input type="text" name="search_term" placeholder="Search term">
 				<select name="search_category">
 					<option value="restaurant">Restaurant</option>

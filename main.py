@@ -1,4 +1,6 @@
-from models import Customer
+import models
+from Customer import Customer
+
 
 from flask import Flask, request, render_template, flash, session,  \
     redirect, url_for
@@ -40,8 +42,11 @@ def register():
 @flask_app.route('/restaurant')
 def restaurant():
     return render_template('restaurant.html')
+
+
 def home():
     return render_template('home.html')
+
 
 @flask_app.route('/login', methods=['GET', 'POST'])
 def login():
@@ -57,14 +62,22 @@ def login():
 
     return render_template('login.html')
 
+
 @flask_app.route('/account')
 def account():
     return render_template('account.html')
 
 
-@flask_app.route('/search')
+@flask_app.route('/search', methods=["GET", "POST"])
 def search():
+    if request.method == "POST":
+        category = request.form['search_category']
+        search_term = request.form['search_term']
+        if search_term:
+            models.search_node(category, search_term)
+
     return render_template('search.html')
+
 
 @flask_app.route('/logout')
 def logout():
@@ -78,6 +91,7 @@ def add_friend():
     email = session['user']
     Customer(email).add_friend("bob")
     return redirect(url_for('index'))
+
 
 @flask_app.route('/review')
 def review():
@@ -93,6 +107,7 @@ def restaurantForm():
 def otherPeople():
     session['user'] = True
     return render_template('otherProfile.html')
+
 
 def main():
     flask_app.run(port=5001, debug=True)
