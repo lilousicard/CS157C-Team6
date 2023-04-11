@@ -2,58 +2,6 @@ body {
     font-family: Arial, sans-serif;
     background-color: #f2f2f2;
   }
-  .logo {
-  flex: 1;
-}
-
-.logo h1 {
-  margin: 0;
-  font-size: 32px;
-  color:  white;
-  text-align: left;
-}
-
-  header {
-    background-color: #ea8c55;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
-  }
-  
-  nav {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 20px;
-    max-width: 1200px;
-    margin: 0 auto;
-  }
-
-  nav h1 {
-    margin: 0;
-    font-size: 24px;
-    font-weight: bold;
-    color: #fff;
-    order: -1;
-    margin-right: auto;
-  }
-  
-  nav ul {
-    list-style: none;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin: 0;
-  }
-  
-  nav a {
-    color: #fff;
-    text-decoration: none;
-    padding: 10px;
-  }
-  
-  nav a:hover {
-    background-color: #ffab83;
-  }
-  
   main {
     max-width: 1200px;
     margin: 20px auto;
@@ -137,7 +85,7 @@ body {
     color: #666;
   }
   
-  .container {
+  .containers {
     margin: 100px auto;
     padding: 20px;
     background-color: #fff;
@@ -145,43 +93,17 @@ body {
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
     max-width: 400px;
   }
-  
-  h1 {
-    text-align: center;
-  }
-  
-  form {
-    display: flex;
-    flex-direction: column;
-  }
-  
-  label {
-    margin-top: 10px;
-  }
-  
-  input {
-    padding: 10px;
-    margin-bottom: 20px;
-    border-radius: 5px;
-    border: none;
-  }
-  
-  button {
-    background-color: #ea8c55;
-    color: white;
-    padding: 10px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    margin-top: 20px;
-  }
-  
-  button:hover {
-    background-color: #ea8c55;
-  }
-  
-  a {
-    color: #ea8c55;
-    text-decoration: none;
-  }
+
+  .add-form button[type="submit"] {
+  background-color: #ea8c55;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+}
+
+  .add-form button:hover {
+  background-color: #333;
+  color: #fff;
+}
+
   

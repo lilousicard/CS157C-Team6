@@ -1,28 +1,23 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <title>FoodComm - Login</title>
-    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
-  </head>
-  <body>
-    <header>
-      <div class="logo">
-      <a href="/">
-        <h1>FoodComm</h1>
-      </a>
-     </div>
-    </header>
-    <div class="container">
-      <h1>Login</h1>
-      <form action="{{url_for('login') }}" method="post">
-        <label for="email">Email:</label>
-        <input type="text" id="email" name="email"
-               placeholder="Enter your email">
-        <label for="password">Password:</label>
-        <input type="password" id="password" name="password" placeholder="Enter your password">
-        <button type="submit">Login</button>
-      </form>
-      <p>Don't have an account? <a href="#">Sign up here</a></p>
-    </div>
-  </body>
-</html>
+{% extends "base.html" %}
+{% block head %}
+  {{ super() }}
+  <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='base.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='login.css') }}">
+ {% endblock %}
+{% block content %}
+    <div class="login-box">
+    <h2>Login</h2>
+    <form>
+      <div class="user-box">
+        <input type="email" name="email" required="">
+        <label>Email</label>
+      </div>
+      <div class="user-box">
+        <input type="password" name="password" required="">
+        <label>Password</label>
+      </div>
+      <button type="submit">Login</button>
+    </form>
+    <p>Don't have an account? <a href="/register">Sign up here</a></p>
+  </div>
+{% endblock %}

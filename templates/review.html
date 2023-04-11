@@ -1,18 +1,9 @@
-<!DOCTYPE html>
-<html>
-  <head>
-      <title>FoodComm - Review</title>
+{% extends "base.html" %}
+{% block head %}
+  {{ super() }}
       <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='review.css') }}">
-  </head>
-
-  <body>
-    <header>
-      <div class="logo">
-      <a href="/">
-        <h1>FoodComm</h1>
-      </a>
-     </div>
-    </header>
+{% endblock %}
+{% block content %}
     <form action="" method="post">
       <div class="form-group">
         <label for="review">Review:</label>
@@ -21,8 +12,8 @@
       <div class="form-group">
         <label for="rating">Rating:</label>
         <input type="number" id="rating" name="rating" min="0" max="5">
+        <br>
+        <button type="submit">Submit</button>
       </div>
-      <button type="submit">Submit</button>
     </form>
-  </body>
-</html>
+{% endblock %}

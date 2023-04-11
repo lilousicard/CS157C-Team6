@@ -1,12 +1,12 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <title>FoodComm Sign Up</title>
+{% extends "base.html" %}
+{% block head %}
+  {{ super() }}
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='base.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styleSignUp.css') }}">
-  </head>
-  <body>
-    <div class="container">
-      <form action="{{url_for('register') }}" method="post">
+{% endblock %}
+{% block content %}
+    <div class="containers">
+      <form class="register" action="{{url_for('register') }}" method="post">
         <h1>Sign Up</h1>
         <label for="email"><b>Email</b></label>
         <input id="email" type="email" placeholder="Enter Email" name="email"
@@ -42,6 +42,4 @@
         <button type="submit">Sign Up</button>
       </form>
     </div>
-  </body>
-</html>
-
+{% endblock %}

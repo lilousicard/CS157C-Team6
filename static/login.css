@@ -1,0 +1,65 @@
+body {
+	background-color: #f7ede2;
+	font-family: sans-serif;
+}
+
+.login-box {
+	width: 400px;
+	margin: 100px auto;
+	background-color: #ea8c55;
+	padding: 40px;
+	border-radius: 10px;
+	box-shadow: 0 0 20px #333;
+	color: #fff;
+}
+
+.login-box h2 {
+	text-align: center;
+	margin-bottom: 50px;
+}
+
+.login-box form {
+	display: flex;
+	flex-direction: column;
+}
+
+.login-box .user-box {
+	position: relative;
+}
+
+.login-box .user-box input {
+	width: 100%;
+	padding: 10px 0;
+	margin-bottom: 30px;
+	border: none;
+	border-bottom: 1px solid #fff;
+	outline: none;
+	background: transparent;
+	color: #fff;
+	font-size: 16px;
+}
+
+.login-box .user-box label {
+	position: absolute;
+	top: 0;
+	left: 0;
+	padding: 10px 0;
+	font-size: 16px;
+	color: #fff;
+	pointer-events: none;
+	transition: 0.5s;
+}
+
+.login-box .user-box input:focus ~ label,
+.login-box .user-box input:valid ~ label {
+	top: -20px;
+	left: 0;
+	color: #fff;
+	font-size: 12px;
+}
+
+.login-box button[type="submit"] {
+	background-color: #fff;
+	color: #ea8c55;
+	border: none
+

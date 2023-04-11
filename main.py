@@ -43,11 +43,6 @@ def restaurant():
 def home():
     return render_template('home.html')
 
-@flask_app.route('/signup')
-def signup():
-    return render_template('signup.html')
-
-
 @flask_app.route('/login', methods=['GET', 'POST'])
 def login():
     if request.method == 'POST':
@@ -96,8 +91,8 @@ def restaurantForm():
 
 @flask_app.route('/otherProfile')
 def otherPeople():
+    session['user'] = True
     return render_template('otherProfile.html')
-
 
 def main():
     flask_app.run(port=5001, debug=True)

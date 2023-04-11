@@ -1,24 +1,10 @@
-<!DOCTYPE html>
-<html>
-<head>
-	<meta charset="UTF-8">
-	<title>FoodComm</title>
+{% extends "base.html" %}
+{% block head %}
+	{{ super() }}
+	<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='base.css') }}">
 	<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='home.css') }}">
-</head>
-<body>
-	<header>
-		<div class="logo">
-			<a href="/">
-				<h1>FoodComm</h1>
-			</a>
-		</div>
-		
-		<form class="header-form" method="get" action="">
-			<button type="submit" formaction="/signup">Sign up</button>
-			<button type="submit" formaction="/login">Login</button>
-			<button type="submit" formaction="/account">Profile</button>
-		</form>
-	</header>
+{% endblock %}
+{% block content %}
 	<main>
 		<section class="restaurant-list">
 			<div class="container">
@@ -35,31 +21,31 @@
 			<a href="/restaurant">Picture 3</a>
 		</div>
 		<div class="item">
-			<a href="/restaurant"><img src={{ url_for('static', filename='media/rest3.jpg') }} alt="Picture 4" width="200" height="200"></a>
+			<a href="/restaurant"><img src={{ url_for('static', filename='media/rest4.jpg') }} alt="Picture 4" width="200" height="200"></a>
 			<a href="/restaurant">Picture 4</a>
 		</div>
 		<div class="item">
-			<a href="/restaurant"><img src={{ url_for('static', filename='media/rest3.jpg') }} alt="Picture 5" width="200" height="200"></a>
+			<a href="/restaurant"><img src={{ url_for('static', filename='media/rest5.jpg') }} alt="Picture 5" width="200" height="200"></a>
 			<a href="/restaurant">Picture 5</a>
 		</div>
 		<div class="item">
-			<a href="/restaurant"><img src={{ url_for('static', filename='media/rest3.jpg') }} alt="Picture 6" width="200" height="200"></a>
+			<a href="/restaurant"><img src={{ url_for('static', filename='media/rest6.jpg') }} alt="Picture 6" width="200" height="200"></a>
 			<a href="/restaurant">Picture 6</a>
 		</div>
 		<div class="item">
-			<a href="/restaurant"><img src={{ url_for('static', filename='media/rest3.jpg') }} alt="Picture 7" width="200" height="200"></a>
+			<a href="/restaurant"><img src={{ url_for('static', filename='media/rest7.jpg') }} alt="Picture 7" width="200" height="200"></a>
 			<a href="/restaurant">Picture 7</a>
 		</div>
 		<div class="item">
-			<a href="/restaurant"><img src={{ url_for('static', filename='media/rest3.jpg') }} alt="Picture 8" width="200" height="200"></a>
+			<a href="/restaurant"><img src={{ url_for('static', filename='media/rest8.jpg') }} alt="Picture 8" width="200" height="200"></a>
 			<a href="/restaurant">Picture 8</a>
 		</div>
 		<div class="item">
-			<a href="/restaurant"><img src={{ url_for('static', filename='media/rest3.jpg') }} alt="Picture 9" width="200" height="200"></a>
+			<a href="/restaurant"><img src={{ url_for('static', filename='media/rest9.jpg') }} alt="Picture 9" width="200" height="200"></a>
 			<a href="/restaurant">Picture 9</a>
 		</div>
 		<div class="item">
-			<a href="/restaurant"><img src={{ url_for('static', filename='media/rest3.jpg') }} alt="Picture 10" width="200" height="200"></a>
+			<a href="/restaurant"><img src={{ url_for('static', filename='media/shakeShack.jpg') }} alt="Picture 10" width="200" height="200"></a>
 			<a href="/restaurant">Picture 10</a>
 		</div>
 	</div>
@@ -80,6 +66,4 @@
 			</article>
 		</section>
 	</main>
-</body>
-</html>
-
+{% endblock %}

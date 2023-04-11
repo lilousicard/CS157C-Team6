@@ -1,27 +1,7 @@
-header {
-  background-color: #ea8c55;
-  display: flex;
-  align-items: center;
-  padding: 10px;
-}
-
-.logo {
-  flex: 1;
-}
-
-.logo h1 {
-  margin: 0;
-  font-size: 32px;
-  color:  white;
-}
-
-form {
-  max-width: 500px;
-  margin: 0 auto;
-}
-
 .form-group {
   margin-bottom: 20px;
+  max-width: 500px;
+  margin: 0 auto;
 }
 
 label {
@@ -44,9 +24,14 @@ textarea {
   height: 100px;
 }
 
-button[type="submit"] {
+.form-group button[type="submit"] {
   background-color: #ea8c55;
   color: white;
   padding: 10px 20px;
   border: none;
+}
+
+.form-group button:hover {
+  background-color: #333;
+  color: #fff;
 }

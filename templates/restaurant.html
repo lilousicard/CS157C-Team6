@@ -1,24 +1,10 @@
-<!DOCTYPE html>
-<html>
-<head>
-	<meta charset="UTF-8">
-	<title>FoodComm</title>
+{% extends "base.html" %}
+{% block head %}
+	{{ super() }}
+	<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='base.css') }}">
 	<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='restaurant.css') }}">
-</head>
-<body>
-	<header>
-		<div class="logo">
-			<a href="/">
-				<h1>FoodComm</h1>
-			</a>
-		</div>
-		
-		<form class="header-form" method="get" action="">
-			<button type="submit" formaction="/signup">Sign up</button>
-			<button type="submit" formaction="/login">Login</button>
-			<button type="submit" formaction="/account">Account</button>
-		</form>
-	</header>
+{% endblock %}
+{% block content %}
 	<main>
 		<div class="title-container">
 			<h2 class="page-title">Restaurant Info Page</h2>
@@ -32,8 +18,5 @@
 			<p class="restaurant-details">Review: <span class="detail">"Amazing food and great service!"</span></p>
 			<p class="restaurant-details">Review: <span class="detail">"Loved it"</span></p>
 		</section>
-
 	</main>
-</body>
-</html>
-
+{% endblock %}
