@@ -1,6 +1,7 @@
 from py2neo import Graph, Node, Relationship, NodeMatcher
 from passlib.hash import bcrypt
 import os
+import re
 
 url = os.environ.get("neo4j+s://ea1daa0c.databases.neo4j.io",
                      "bolt://localhost:7687")
@@ -11,7 +12,13 @@ matcher = NodeMatcher(graph)
 
 
 def search_node(node, search_term):
-    print(f"searching {search_term} in {node}")
+    target_node = node.capitalize()
+    results = matcher.match(target_node).where(
+        f"any(attr in keys(_) where attr <> 'password' and _[attr] =~ '(?i).*{search_term}.*')"
+    )
+    return [dict(node) for node in results]
+
+
 
 
 

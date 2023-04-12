@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+{% block head %}
+	{{ super() }}
+	<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='search_results.css') }}">
+{% endblock %}
+{% block content %}
+	<main>
+		<div class="search-results">
+			<h2>Search results</h2>
+
+		    {% if results %}
+				  {% for each in results %}
+						<div class="result-item">
+						  	<img src="{{ url_for('static', filename='media/Mariado.jpg') }}" alt="Profile Image">
+						  	<div class="result-item-text">
+								<p>Name: {{ each['name'] }}</p>
+								<p>Age: {{ each['age'] }}</p>
+								<p>Gender: {{ each['gender'] }}</p>
+						  	</div>
+							<div class="result-item-btn">
+								<button>View Profile</button>
+								{% if session['user'] %}
+								<button>Add Friend</button>
+								{% endif %}
+							</div>
+						</div>
+				  {% endfor %}
+			{% else %}
+			  <p>No results found.</p>
+			{% endif %}
+		</div>
+	</main>
+{% endblock %}

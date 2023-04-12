@@ -48,3 +48,4 @@ class Customer:
             graph.create(Relationship(cur_user, "FRIENDS", friend_node))
         else:
             print(f"User {friend_email} doesn't exist")
+

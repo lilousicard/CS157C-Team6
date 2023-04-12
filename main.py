@@ -74,10 +74,21 @@ def search():
     if request.method == "POST":
         category = request.form['search_category']
         search_term = request.form['search_term']
+
         if search_term:
-            models.search_node(category, search_term)
+            results = models.search_node(category, search_term)
+            for data in results:
+                print(data)
+            session['results'] = results
+            return redirect(url_for('search_results'))
 
     return render_template('search.html')
+
+
+@flask_app.route('/search_results', methods=["GET"])
+def search_results():
+    results = session.get('results')
+    return render_template('search_results.html', results=results)
 
 
 @flask_app.route('/logout')
@@ -99,7 +110,7 @@ def review():
     return render_template('review.html')
 
 
-#should be accessible to only owners
+# should be accessible to only owners
 @flask_app.route('/editForm')
 def restaurantForm():
     return render_template('restaurantForm.html')
