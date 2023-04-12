@@ -7,6 +7,7 @@ from flask import Flask, request, render_template, flash, session,  \
 import os
 flask_app = Flask(__name__)
 flask_app.secret_key = os.urandom(24)
+flask_app.config['STATIC_FOLDER'] = 'static'
 
 
 @flask_app.route('/')
@@ -17,6 +18,10 @@ def index():
 @flask_app.route('/register', methods=['GET', 'POST'])
 def register():
     if request.method == 'POST':
+        image = request.files['picture']
+        image_path = os.path.join(flask_app.config['STATIC_FOLDER'], 'media', 'profile_pictures', image.filename)
+        image.save(image_path)
+
         email = request.form['email']
         password = request.form['password']
         params = {
@@ -24,13 +29,14 @@ def register():
             'password': password,
             'gender': request.form['gender'],
             'age': request.form['age'],
-            'restaurant_owner': request.form.get('restaurant')
+            'restaurant_owner': request.form.get('restaurant'),
+            'image_path': image_path
         }
 
         if len(password) < 5:
             flash('Your password must be at least 5 characters.')
         elif not Customer(email).register(params):
-            flash(' Username already exists.')
+            flash('Username already exists.')
         else:
             session['user'] = email
             flash('Logged in.')
@@ -66,7 +72,8 @@ def login():
 
 @flask_app.route('/account')
 def account():
-    return render_template('account.html')
+    curr_user = models.get_customer(session.get('user'))
+    return render_template('account.html', curr_user=curr_user)
 
 
 @flask_app.route('/search', methods=["GET", "POST"])

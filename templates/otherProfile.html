@@ -6,11 +6,11 @@
 {% block content %}
     <main>
       <section class="profile-header">
+        {% if other_user %}
         <div class="profile-img">
-          <img src="{{ url_for('static', filename='media/jason_parsons.jpg') }}" alt="Profile Image">
+          <img src="{{ other_user['image_path'] }}" alt="Profile Image">
         </div>
         <div class="profile-info">
-          {% if other_user %}
             <h1>{{ other_user['name'] }}</h1>
             <h2>{{ other_user['age'] }}</h2>
             <h2>{{ other_user['gender'] }}</h2>

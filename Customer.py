@@ -23,17 +23,18 @@ class Customer:
         age = params.get("age")
         gender = params.get("gender")
         owner = params.get("restaurant_owner")
+        image_path = params.get("image_path")
         # encrypt pass later with bcrypt
         if not self.find():
             if not owner:
                 cust = Node("Customer", email=self.email,
                             name=name, password=password, gender=gender,
-                            age=age)
+                            age=age, image_path=image_path)
                 graph.create(cust)
                 return True
             else:
                 owner = Node("Owner", email=self.email, name=name,
-                             password=password, gender=gender, age=age)
+                             password=password, gender=gender, age=age, image_path=image_path)
                 graph.create(owner)
                 return True
         else:

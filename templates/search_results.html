@@ -11,7 +11,7 @@
 		    {% if results %}
 				  {% for each in results %}
 						<div class="result-item">
-						  	<img src="{{ url_for('static', filename='media/Mariado.jpg') }}" alt="Profile Image">
+						  	<img src="{{ each['image_path'] }}" alt="Profile Image">
 						  	<div class="result-item-text">
 								<p>Name: {{ each['name'] }}</p>
 								<p>Age: {{ each['age'] }}</p>
