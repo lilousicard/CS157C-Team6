@@ -10,8 +10,13 @@
           <img src="{{ url_for('static', filename='media/jason_parsons.jpg') }}" alt="Profile Image">
         </div>
         <div class="profile-info">
-          <h1>Jason Parsons</h1>
-          <h2>New York, NY</h2>
+          {% if other_user %}
+            <h1>{{ other_user['name'] }}</h1>
+            <h2>{{ other_user['age'] }}</h2>
+            <h2>{{ other_user['gender'] }}</h2>
+          {% else %}
+            <h1>User doesn't exist</h1>
+          {% endif %}
         </div>
       <form class="add-form" method="get" action="">
         <button type="submit" formaction="/add_friend">Send Friend Request</button>

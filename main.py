@@ -77,8 +77,6 @@ def search():
 
         if search_term:
             results = models.search_node(category, search_term)
-            for data in results:
-                print(data)
             session['results'] = results
             return redirect(url_for('search_results'))
 
@@ -116,10 +114,12 @@ def restaurantForm():
     return render_template('restaurantForm.html')
 
 
-@flask_app.route('/otherProfile')
-def otherPeople():
+@flask_app.route('/otherProfile', methods=['POST'])
+def other_profile():
+    email = request.form['email']
+    other_user = models.get_customer(email)
     session['user'] = True
-    return render_template('otherProfile.html')
+    return render_template('otherProfile.html', other_user=other_user)
 
 
 def main():

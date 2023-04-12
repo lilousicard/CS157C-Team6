@@ -19,6 +19,10 @@ def search_node(node, search_term):
     return [dict(node) for node in results]
 
 
+def get_customer(email):
+    return matcher.match("Customer", email=email).first()
+
+
 
 
 
