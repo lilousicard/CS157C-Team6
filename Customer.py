@@ -1,4 +1,5 @@
-from models import graph, matcher, Node, Relationship
+import models
+from models import graph, matcher, rel_matcher, Node, Relationship
 
 
 class Customer:
@@ -49,4 +50,19 @@ class Customer:
             graph.create(Relationship(cur_user, "FRIENDS", friend_node))
         else:
             print(f"User {friend_email} doesn't exist")
+
+    def get_friends(self):
+        cust = self.find()
+        friends = rel_matcher.match((cust, None), "FRIENDS")
+        return [r.end_node for r in friends]
+
+    def is_friends(self, other_email):
+        cur_user = self.find()
+        other_user = models.get_customer(other_email)
+        return rel_matcher.match(nodes=[cur_user, other_user],
+                                 r_type="FRIENDS")
+
+
+
+
 

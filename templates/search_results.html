@@ -18,12 +18,24 @@
 								<p>Gender: {{ each['gender'] }}</p>
 						  	</div>
 							<div class="result-item-btn">
-								<form method="post" action="{{ url_for('other_profile') }}">
-								  <input type="hidden" name="email" value="{{ each['email'] }}">
+								<form method="post"
+									  action="{{ url_for('other_profile') }}">
+								  	<input type="hidden" name="email"
+										   value="{{ each['email'] }}">
 									<button type="submit">View Profile</button>
 								</form>
 								{% if session['user'] %}
-									<button>Add Friend</button>
+									{% if
+								customer.is_friends(each['email']) %}
+										<p>Friends</p>
+									{% else %}
+									<form method="post"
+										  action="{{ url_for('add_friend') }}">
+										<input type="hidden" name="email"
+											   value="{{ each['email'] }}">
+										<button>Add Friend</button>
+									</form>
+									{% endif %}
 								{% endif %}
 							</div>
 						</div>

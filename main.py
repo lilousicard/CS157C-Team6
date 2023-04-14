@@ -4,6 +4,7 @@ from Customer import Customer
 from flask import Flask, request, render_template, flash, session,  \
     redirect, url_for
 
+from passlib.hash import bcrypt
 import os
 flask_app = Flask(__name__)
 flask_app.secret_key = os.urandom(24)
@@ -19,7 +20,8 @@ def index():
 def register():
     if request.method == 'POST':
         image = request.files['picture']
-        image_path = os.path.join(flask_app.config['STATIC_FOLDER'], 'media', 'profile_pictures', image.filename)
+        image_path = os.path.join(flask_app.config['STATIC_FOLDER'],
+                                  'media', 'profile_pictures', image.filename)
         image.save(image_path)
 
         email = request.form['email']
@@ -93,7 +95,8 @@ def search():
 @flask_app.route('/search_results', methods=["GET"])
 def search_results():
     results = session.get('results')
-    return render_template('search_results.html', results=results)
+    customer = Customer(session.get('user'))
+    return render_template('search_results.html', results=results, customer=customer)
 
 
 @flask_app.route('/logout')
@@ -105,9 +108,13 @@ def logout():
 
 @flask_app.route('/add_friend', methods=["GET", "POST"])
 def add_friend():
-    email = session['user']
-    Customer(email).add_friend("bob")
-    return redirect(url_for('index'))
+    cur_user = session['user']
+    other_user = request.form['email']
+    if cur_user:
+        print(f"{cur_user} sending friend request to {other_user}")
+        Customer(cur_user).add_friend(other_user)
+        return redirect(request.referrer)
+    return redirect(url_for('login'))
 
 
 @flask_app.route('/review')
