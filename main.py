@@ -117,10 +117,14 @@ def logout():
 
 @flask_app.route('/add_friend', methods=["GET", "POST"])
 def add_friend():
+    # Relationships are not bidirectional, so need to call add friends for
+    # both Customer instances
     cur_user = session.get('user')
     other_user = request.form.get('email')
     if cur_user:
         Customer(cur_user).add_friend(other_user)
+        # relationships are not bidirectional so make them
+        Customer(other_user).add_friend(cur_user)
         return redirect(request.referrer)
     return redirect(url_for('login'))
 

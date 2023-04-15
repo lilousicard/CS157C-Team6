@@ -48,8 +48,6 @@ class Customer:
         # create connection of friend_node was found(Should be no error)
         if friend_node:
             graph.create(Relationship(cur_user, "FRIENDS", friend_node))
-            # relationships are not bidirectional so make them
-            graph.create(Relationship(friend_node, "FRIENDS", cur_user))
         else:
             print(f"User {friend_email} doesn't exist")
 

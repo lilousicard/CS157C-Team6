@@ -2,7 +2,7 @@
 other profile. The friend button will change depending on if they're friends
 already. Will toggle between add/remove friend
 
-Check comments in remove_friend method in main.py
+Check comments in add/remove_friend methods in main.py
 
 2. The search function will now ignore currently logged in users, emails and
 passwords
