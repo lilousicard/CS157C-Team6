@@ -14,6 +14,7 @@
             <h1>{{ curr_user['name'] }}</h1>
             <h2>{{ curr_user['age'] }}</h2>
             <h2>{{ curr_user['gender'] }}</h2>
+            <a>Friends: {{ user_friends }}</a>
           {% else %}
             <h1>User doesn't exist</h1>
           {% endif %}

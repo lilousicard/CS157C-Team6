@@ -44,17 +44,34 @@ class Customer:
     def add_friend(self, friend_email):
         cur_user = self.find()
         # search for the user that has been sent a friend request
-        friend_node = matcher.match("Customer", email=friend_email).first()
+        friend_node = models.get_customer(friend_email)
         # create connection of friend_node was found(Should be no error)
         if friend_node:
             graph.create(Relationship(cur_user, "FRIENDS", friend_node))
+            # relationships are not bidirectional so make them
+            graph.create(Relationship(friend_node, "FRIENDS", cur_user))
         else:
             print(f"User {friend_email} doesn't exist")
 
+    def remove_friend(self, friend_email):
+        cur_user = self.find()
+        # search for the user that has been sent a friend request
+        other_user = models.get_customer(friend_email)
+        # remove connection between the two nodes
+        # Don't use graph.delete, will also remove the nodes
+        rel = rel_matcher.match(nodes=[cur_user, other_user],
+                          r_type="FRIENDS").first()
+        graph.separate(rel)
+
     def get_friends(self):
-        cust = self.find()
-        friends = rel_matcher.match((cust, None), "FRIENDS")
+        cur_user = self.find()
+        friends = rel_matcher.match((cur_user, None), "FRIENDS")
         return [r.end_node for r in friends]
+
+    def get_num_friends(self):
+        cur_user = self.find()
+        num_friends = len(graph.match((cur_user, None), "FRIENDS"))
+        return num_friends
 
     def is_friends(self, other_email):
         cur_user = self.find()

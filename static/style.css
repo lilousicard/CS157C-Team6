@@ -94,7 +94,7 @@ body {
     max-width: 400px;
   }
 
-  .add-form button[type="submit"] {
+  .add-form button {
   background-color: #ea8c55;
   color: white;
   padding: 10px 20px;

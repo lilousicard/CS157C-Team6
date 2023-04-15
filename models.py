@@ -10,15 +10,19 @@ matcher = NodeMatcher(graph)
 rel_matcher = RelationshipMatcher(graph)
 
 
-def search_node(node, search_term):
+def search_node(node, search_term, exclude_term):
     target_node = node.capitalize()
     # search for nodes that have attributes that match the search term,
     # but exclude password and email
-    # TODO: exclude logged in user as well
     results = matcher.match(target_node).where(
         f"any(attr in keys(_) where attr <> 'password' and attr <> 'email' "
         f"and _["f"attr]  =~ '("f"?i).*{search_term}.*')"
     )
+
+    # if searching for users, exclude the currently logged-in user
+    if exclude_term is not None:
+        results = results.where(f"_.email <> '{exclude_term}'")
+
     return [dict(node) for node in results]
 
 

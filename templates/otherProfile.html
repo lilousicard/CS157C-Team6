@@ -14,13 +14,28 @@
             <h1>{{ other_user['name'] }}</h1>
             <h2>{{ other_user['age'] }}</h2>
             <h2>{{ other_user['gender'] }}</h2>
+            <a>Friends: {{ user_friends }}</a>
           {% else %}
             <h1>User doesn't exist</h1>
           {% endif %}
         </div>
-      <form class="add-form" method="get" action="">
-        <button type="submit" formaction="/add_friend">Send Friend Request</button>
-      </form>
+      {% if session['user'] %}
+        {% if customer.is_friends(other_user['email']) %}
+          <form class='add-form' method="post"
+                action="{{ url_for('remove_friend') }}">
+            <input type="hidden" name="email"
+                  value="{{ other_user['email'] }}">
+           <button>Remove Friend</button>
+          </form>
+        {% else %}
+          <form class='add-form' method="post"
+                action="{{ url_for('add_friend') }}">
+            <input type="hidden" name="email"
+                   value="{{ other_user['email'] }}">
+            <button>Add Friend</button>
+          </form>
+        {% endif %}
+      {% endif %}
       </section>
       <section class="profile-reviews">
         <h2>Reviews</h2>

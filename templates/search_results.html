@@ -27,7 +27,12 @@
 								{% if session['user'] %}
 									{% if
 								customer.is_friends(each['email']) %}
-										<p>Friends</p>
+									<form method="post"
+										  action="{{ url_for('remove_friend') }}">
+										<input type="hidden" name="email"
+											   value="{{ each['email'] }}">
+										<button>Remove Friend</button>
+									</form>
 									{% else %}
 									<form method="post"
 										  action="{{ url_for('add_friend') }}">
