@@ -1,0 +1,71 @@
+body {
+	background-color: #f7ede2;
+	font-family: sans-serif;
+}
+
+.city-page {
+	width: 100%;
+	margin: 100px auto;
+	text-align: center;
+}
+
+.city-name {
+	color: black;
+	font-weight: bold;
+	font-size: 80px;
+	margin-bottom: 30px;
+}
+
+.city-picture {
+  	margin-left: auto;
+  	margin-right: auto;
+  	width: 90%;
+	margin-bottom: 30px;
+}
+
+.city-picture img{
+	background-color: #ea8c55;
+}
+
+.scrollable-list {
+	overflow-x: scroll;
+	white-space: nowrap;
+}
+
+.scrollable-list ul {
+	display: flex;
+	padding: 0;
+	margin: 0;
+}
+
+.scrollable-list li {
+	list-style: none;
+	padding: 0 10px;
+}
+
+.restaurant-item {
+	display: inline-block;
+	justify-content: space-between;
+	background-color: white;
+	text-align: center;
+	line-height: 50px;
+}
+
+.restaurant-picture img{
+	width: 50%;
+	height: 50%;
+	border-radius: 5px;
+	background-color: #ea8c55;
+	margin-bottom: 10px;
+	margin-top: 50px;
+}
+
+.restaurant-details {
+	text-align: center;
+}
+
+.restaurant-details h3 {
+	font-weight: bold;
+	margin: 0;
+}
+

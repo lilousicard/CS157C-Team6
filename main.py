@@ -109,6 +109,14 @@ def restaurantForm():
 def otherPeople():
     session['user'] = True
     return render_template('otherProfile.html')
+    
+@flask_app.route('/friendsPage')
+def friendList():
+	return render_template('friendsPage.html')
+	
+@flask_app.route('/city')
+def city():
+	return render_template('city.html')
 
 
 def main():
