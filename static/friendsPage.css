@@ -1,0 +1,66 @@
+body {
+	background-color: #f7ede2;
+	font-family: sans-serif;
+}
+
+.friends-list {
+	width: 80%;
+	margin: 100px auto;
+}
+
+.friends-list h2 {
+	text-align: center;
+	margin-bottom: 30px;
+	color: #ea8c55;
+}
+
+.scrollable-list {
+	overflow-x: auto;
+	white-space: nowrap;
+}
+
+.scrollable-list ul {
+	display: inline-flex;
+	padding: 0;
+	margin: 0;
+}
+
+.scrollable-list li {
+	list-style: none;
+	padding: 0 10px;
+}
+
+.friend-item {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+.friend-picture {
+	width: 100px;
+	height: 100px;
+	background-color: #ea8c55;
+	margin-bottom: 10px;
+}
+
+.friend-picture img{
+	width: 100px;
+	height: 100px;
+	background-color: #ea8c55;
+	margin-bottom: 10px;
+}
+
+.friend-details {
+	margin-top: 20px;
+	text-align: center;
+}
+
+.friend-details h3 {
+	font-weight: bold;
+	margin: 0;
+}
+
+.friend-city {
+	color: #999;
+	margin: 0;
+}

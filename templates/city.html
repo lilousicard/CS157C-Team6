@@ -1,0 +1,56 @@
+{% extends "base.html" %}
+{% block head %}
+  {{ super() }}
+  <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='city.css') }}">
+{% endblock %}
+{% block content %}
+<div class="city-page">
+    <h2 class="city-name">Boston</h2>
+    <div class="city-picture"><img src="{{ url_for('static', filename='media/boston.jpg') }}" alt="City Image"></div>
+    <div class="scrollable-list">
+      <ul>
+        <li>
+          <div class="restaurant-item">
+            <div class="restaurant-picture">
+              <a href="/restaurant"><img src="{{ url_for('static', filename='media/boston.jpg') }}" alt="City Image"></a>
+            </div>
+            <div class="restaurant-details">
+              <h3>Restaurant Name 1</h3>
+            </div>
+          </div>
+        </li>
+        <li>
+          <div class="restaurant-item">
+            <div class="restaurant-picture">
+              <a href="/restaurant"><img src="{{ url_for('static', filename='media/boston.jpg') }}" alt="City Image"></a>
+            </div>
+            <div class="restaurant-details">
+              <h3>Restaurant Name 2</h3>
+            </div>
+          </div>
+        </li>
+        <li>
+          <div class="restaurant-item">
+            <div class="restaurant-picture">
+              <a href="/restaurant"><img src="{{ url_for('static', filename='media/boston.jpg') }}" alt="City Image"></a>
+            </div>
+            <div class="restaurant-details">
+              <h3>Restaurant Name 3</h3>
+            </div>
+          </div>
+        </li>
+        <li>
+          <div class="restaurant-item">
+            <div class="restaurant-picture">
+              <a href="/restaurant"><img src="{{ url_for('static', filename='media/boston.jpg') }}" alt="City Image"></a>
+            </div>
+            <div class="restaurant-details">
+              <h3>Restaurant Name 4</h3>
+            </div>
+          </div>
+        </li>
+        <!-- Add more restaurant items as needed -->
+      </ul>
+    </div>
+  </div>
+{% endblock %}

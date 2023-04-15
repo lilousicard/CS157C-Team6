@@ -169,6 +169,16 @@ def other_profile():
                            customer=customer, user_friends=user_friends)
 
 
+@flask_app.route('/friendsPage')
+def friend_list():
+    return render_template('friendsPage.html')
+
+
+@flask_app.route('/city')
+def city():
+    return render_template('city.html')
+
+
 def main():
     flask_app.run(port=5001, debug=True)
 

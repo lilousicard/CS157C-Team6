@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+{% block head %}
+  {{ super() }}
+  <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='friendsPage.css') }}">
+{% endblock %}
+{% block content %}
+<div class="friends-list">
+    <h2>Friends' Accounts</h2>
+    <div class="scrollable-list">
+      <ul>
+        <li>
+          <div class="friend-item">
+            <div class="friend-picture">
+              <img src= {{ url_for('static', filename='media/ian_marshall.jpg') }} alt="Name">
+            </div>
+            <div class="friend-details">
+              <h3>John Doe</h3>
+              <p class="friend-city">Montreal</p>
+            </div>
+          </div>
+        </li>
+        <li>
+          <div class="friend-item">
+            <div class="friend-picture"></div>
+            <div class="friend-details">
+              <h3>Jane Smith</h3>
+              <p class="friend-city">New York City</p>
+            </div>
+          </div>
+        </li>
+        <li>
+          <div class="friend-item">
+            <div class="friend-picture"></div>
+            <div class="friend-details">
+              <h3>Mark Johnson</h3>
+              <p class="friend-city">San Francisco</p>
+            </div>
+          </div>
+        </li>
+        <!-- Add more friend items as needed -->
+      </ul>
+    </div>
+  </div>
+{% endblock %}
