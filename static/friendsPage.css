@@ -37,15 +37,15 @@ body {
 }
 
 .friend-picture {
-	width: 100px;
-	height: 100px;
+	max-width: 150px;
+    max-height: 150px;
 	background-color: #ea8c55;
 	margin-bottom: 10px;
 }
 
 .friend-picture img{
-	width: 100px;
-	height: 100px;
+    max-width: 150px;
+    max-height: 150px;
 	background-color: #ea8c55;
 	margin-bottom: 10px;
 }

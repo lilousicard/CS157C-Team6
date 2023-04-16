@@ -6,16 +6,36 @@
 {% block content %}
     <main>
       <section class="profile-header">
+        {% if other_user %}
         <div class="profile-img">
-          <img src="{{ url_for('static', filename='media/jason_parsons.jpg') }}" alt="Profile Image">
+          <img src="{{ other_user['image_path'] }}" alt="Profile Image">
         </div>
         <div class="profile-info">
-          <h1>Jason Parsons</h1>
-          <h2>New York, NY</h2>
+            <h1>{{ other_user['name'] }}</h1>
+            <h2>{{ other_user['age'] }}</h2>
+            <h2>{{ other_user['gender'] }}</h2>
+            <a href="{{ url_for('friend_list', user_friends=other_user.get('email')) }}">Friends: {{ user_friends }}</a>
+          {% else %}
+            <h1>User doesn't exist</h1>
+          {% endif %}
         </div>
-      <form class="add-form" method="get" action="">
-        <button type="submit" formaction="/add_friend">Send Friend Request</button>
-      </form>
+      {% if session['user'] %}
+        {% if customer.is_friends(other_user['email']) %}
+          <form class='add-form' method="post"
+                action="{{ url_for('remove_friend') }}">
+            <input type="hidden" name="email"
+                  value="{{ other_user['email'] }}">
+           <button>Remove Friend</button>
+          </form>
+        {% else %}
+          <form class='add-form' method="post"
+                action="{{ url_for('add_friend') }}">
+            <input type="hidden" name="email"
+                   value="{{ other_user['email'] }}">
+            <button>Add Friend</button>
+          </form>
+        {% endif %}
+      {% endif %}
       </section>
       <section class="profile-reviews">
         <h2>Reviews</h2>

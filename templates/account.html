@@ -6,12 +6,18 @@
 {% block content %}
     <main>
       <section class="profile-header">
+        {% if curr_user %}
         <div class="profile-img">
-          <img src="{{ url_for('static', filename='media/Mariado.jpg') }}" alt="Profile Image">
+          <img src="{{ curr_user['image_path'] }}" alt="Profile Image">
         </div>
         <div class="profile-info">
-          <h1>Maria Doe</h1>
-          <h2>New York, NY</h2>
+            <h1>{{ curr_user['name'] }}</h1>
+            <h2>{{ curr_user['age'] }}</h2>
+            <h2>{{ curr_user['gender'] }}</h2>
+            <a href="{{ url_for('friend_list', user_friends=curr_user.get('email')) }}">Friends: {{ user_friends }}</a>
+          {% else %}
+            <h1>User doesn't exist</h1>
+          {% endif %}
         </div>
       </section>
       <section class="profile-reviews">

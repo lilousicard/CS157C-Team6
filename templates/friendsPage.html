@@ -8,36 +8,35 @@
     <h2>Friends' Accounts</h2>
     <div class="scrollable-list">
       <ul>
+        {% if user_friend_list %}
+          {% for friend in user_friend_list %}
+            <li>
+              <div class="friend-item">
+                <div class="friend-picture">
+                  <img src="{{ friend.get('image_path') }}"
+                       alt="profile picture">
+                </div>
+                <div class="friend-details">
+                  <h3>{{ friend.get('name') }}</h3>
+                  <p class="friend-city">Montreal</p><br>
+                  {% if friend.get('email') != session.get('user') %}
+                  <form method="post" action="{{ url_for('other_profile') }}">
+                    <input type="hidden" name="email"
+                           value="{{ friend.get('email') }}">
+                    <button type="submit">View Profile</button>
+                  </form>
+                  {% endif %}
+                </div>
+              </div>
+            </li>
+          {% endfor %}
+        {% else %}
         <li>
           <div class="friend-item">
-            <div class="friend-picture">
-              <img src= {{ url_for('static', filename='media/ian_marshall.jpg') }} alt="Name">
-            </div>
-            <div class="friend-details">
-              <h3>John Doe</h3>
-              <p class="friend-city">Montreal</p>
-            </div>
+            <p>This user has no friends yet</p>
           </div>
         </li>
-        <li>
-          <div class="friend-item">
-            <div class="friend-picture"></div>
-            <div class="friend-details">
-              <h3>Jane Smith</h3>
-              <p class="friend-city">New York City</p>
-            </div>
-          </div>
-        </li>
-        <li>
-          <div class="friend-item">
-            <div class="friend-picture"></div>
-            <div class="friend-details">
-              <h3>Mark Johnson</h3>
-              <p class="friend-city">San Francisco</p>
-            </div>
-          </div>
-        </li>
-        <!-- Add more friend items as needed -->
+        {% endif %}
       </ul>
     </div>
   </div>

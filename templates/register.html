@@ -6,7 +6,7 @@
 {% endblock %}
 {% block content %}
     <div class="containers">
-      <form class="register" action="{{url_for('register') }}" method="post">
+      <form class="register" action="{{url_for('register') }}" method="post" enctype="multipart/form-data">
         <h1>Sign Up</h1>
         <label for="email"><b>Email</b></label>
         <input id="email" type="email" placeholder="Enter Email" name="email"

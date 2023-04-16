@@ -16,12 +16,12 @@
 		</div>
 		
 		<form class="header-form" method="get" action="">
-			{% if not session['user'] %}
+			{% if not session.get('user') %}
 				<button type="submit" formaction="/register">Sign up</button>
 				<button type="submit" formaction="/login">Login</button>
 			{% else %}
 				<button type="submit" formaction="/explore">Explore</button>
-				<button type="submit" formaction="/friends">Friends</button>
+				<button type="submit" formaction="/friendsPage">Friends</button>
 				<button type="submit" formaction="/account">Profile</button>
 				<button type="submit" formaction="/logout">Logout</button>
 			{% endif %}
