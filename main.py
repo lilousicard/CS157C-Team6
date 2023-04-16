@@ -1,3 +1,4 @@
+from Restaurants import Restaurants
 import models
 from Customer import Customer
 
@@ -51,9 +52,9 @@ def register():
     return render_template('register.html')
 
 
-@flask_app.route('/restaurant')
-def restaurant():
-    return render_template('restaurant.html')
+# @flask_app.route('/restaurant')
+# def restaurant():
+#     return render_template('restaurant.html')
 
 
 def home():
@@ -183,6 +184,19 @@ def friend_list():
 @flask_app.route('/city')
 def city():
     return render_template('city.html')
+
+######### Restaurant specific functions ############
+
+@flask_app.route('/explore')
+def explore_restaurants():
+    user = session.get('user')
+    if user is not None:
+        rests = Restaurants()
+        restaurants = rests.get_all()
+        #restaurants = [{"name": "First"}, {"name": "Second"}]
+        return render_template('list_restaurants.html', list = restaurants)
+    return redirect(url_for('login'))
+
 
 
 def main():
