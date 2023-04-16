@@ -14,7 +14,7 @@
             <h1>{{ other_user['name'] }}</h1>
             <h2>{{ other_user['age'] }}</h2>
             <h2>{{ other_user['gender'] }}</h2>
-            <a>Friends: {{ user_friends }}</a>
+            <a href="{{ url_for('friend_list', user_friends=other_user.get('email')) }}">Friends: {{ user_friends }}</a>
           {% else %}
             <h1>User doesn't exist</h1>
           {% endif %}

@@ -78,7 +78,6 @@ def login():
 
 @flask_app.route('/account')
 def account():
-    session['user'] = "emilyhunter@gmail.com"
     curr_user = models.get_customer(session.get('user'))
     user_friends = Customer(session.get('user')).get_num_friends()
     return render_template('account.html', curr_user=curr_user,
@@ -171,7 +170,14 @@ def other_profile():
 
 @flask_app.route('/friendsPage')
 def friend_list():
-    return render_template('friendsPage.html')
+    user = request.args.get('user_friends')
+    # if we click the friends button from navbar, there is no form
+    # submitting the 'user_friends' information so user will be None,
+    # in this case we can just grab the logged-in user
+    if user is None:
+        user = session.get('user')
+    friends = Customer(user).get_friends()
+    return render_template('friendsPage.html', user_friend_list=friends)
 
 
 @flask_app.route('/city')

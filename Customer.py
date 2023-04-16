@@ -58,13 +58,19 @@ class Customer:
         # remove connection between the two nodes
         # Don't use graph.delete, will also remove the nodes
         rel = rel_matcher.match(nodes=[cur_user, other_user],
-                          r_type="FRIENDS").first()
+                                r_type="FRIENDS").first()
         graph.separate(rel)
 
     def get_friends(self):
+        # return a list of dictionaries with each friend name and
+        # image_path information
         cur_user = self.find()
         friends = rel_matcher.match((cur_user, None), "FRIENDS")
-        return [r.end_node for r in friends]
+        friend_nodes = [r.end_node for r in friends]
+        friend_list = [{'name': node['name'], 'image_path': node[
+            'image_path'], 'email':node['email']}
+                       for node in friend_nodes]
+        return friend_list
 
     def get_num_friends(self):
         cur_user = self.find()
