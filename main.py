@@ -52,11 +52,6 @@ def register():
     return render_template('register.html')
 
 
-# @flask_app.route('/restaurant')
-# def restaurant():
-#     return render_template('restaurant.html')
-
-
 def home():
     return render_template('home.html')
 
@@ -144,9 +139,7 @@ def remove_friend():
     return redirect(url_for('login'))
 
 
-@flask_app.route('/review')
-def review():
-    return render_template('review.html')
+
 
 
 # should be accessible to only owners
@@ -194,10 +187,22 @@ def explore_restaurants():
         rests = Restaurants()
         restaurants = rests.get_all()
         #restaurants = [{"name": "First"}, {"name": "Second"}]
-        return render_template('list_restaurants.html', list = restaurants)
+        return render_template('explore.html', list = restaurants)
+    return redirect(url_for('login'))
+
+@flask_app.route('/review')
+def review():
+    return render_template('review.html')
+
+@flask_app.route('/restaurant/<name>')
+def restaurant(name):
+    user = session.get('user')
+    if user is not None:
+        return render_template('restaurant.html', name = name)
     return redirect(url_for('login'))
 
 
+######## Main method ############
 
 def main():
     flask_app.run(port=5001, debug=True)
