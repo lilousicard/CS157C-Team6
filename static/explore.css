@@ -1,0 +1,29 @@
+body {
+	background-color: #f7ede2;
+	font-family: sans-serif;
+}
+.restaurants-list {
+	width: 80%;
+	margin: 100px auto;
+}
+.restaurants-list h2 {
+	/*text-align: center;*/
+	margin-bottom: 30px;
+	color: #ea8c55;
+}
+
+.scrollable-list {
+	overflow-x: auto;
+	white-space: nowrap;
+}
+
+.scrollable-list ul {
+	display: inline-flex;
+	padding: 0;
+	margin: 0;
+}
+
+.scrollable-list li {
+	list-style: none;
+	padding: 0 10px;
+}

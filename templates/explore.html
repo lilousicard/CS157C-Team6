@@ -1,11 +1,10 @@
 {% extends "base.html" %}
 {% block head %}
-	{{ super() }}
-	<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='base.css') }}">
-	<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='restaurant.css') }}">
+  {{ super() }}
+  <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='explore.css') }}">
 {% endblock %}
 {% block content %}
-	<div class="Restaurants list">
+	<div class="restaurants-list">
     <h2>Restaurants</h2>
     <div class="scrollable-list">
       <ul>
@@ -14,7 +13,7 @@
             <li>
               <div class="rest-item">
                 <div class="rest-details">
-                  <h3> <a href = "review">{{ rests.get('name') }}</a></h3>
+                  <h3> <a href = "restaurant/{{ rests.get('name') }}">{{ rests.get('name') }}</a></h3>
                   <p class="rests-city">Montreal</p><br>
                 </div>
               </div>
