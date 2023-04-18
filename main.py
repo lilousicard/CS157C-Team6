@@ -11,10 +11,6 @@ flask_app = Flask(__name__)
 flask_app.secret_key = os.urandom(24)
 flask_app.config['STATIC_FOLDER'] = 'static'
 
-# TODO:
-# 2. display friend count on profile page
-# 3. allow for click on friend count to display and list all friends
-
 
 @flask_app.route('/')
 def index():
@@ -118,7 +114,6 @@ def add_friend():
     other_user = request.form.get('email')
     if cur_user:
         Customer(cur_user).add_friend(other_user)
-        # relationships are not bidirectional so make them
         Customer(other_user).add_friend(cur_user)
         return redirect(request.referrer)
     return redirect(url_for('login'))
@@ -126,20 +121,15 @@ def add_friend():
 
 @flask_app.route('/remove_friend', methods=["GET", "POST"])
 def remove_friend():
-    # TODO
-    # Removing friends will not remove both relationships
-    # If we want that to happen then add
-    # Customer(other_user).remove_friend(cur_user)
-    # so if amy unfriends zach, should zach still be friends with amy?
+    # Currently, if a user unfriends someone, they will also be unfriended
+    # by the other user
     cur_user = session.get('user')
     other_user = request.form.get('email')
     if cur_user:
         Customer(cur_user).remove_friend(other_user)
+        Customer(other_user).remove_friend(cur_user)
         return redirect(request.referrer)
     return redirect(url_for('login'))
-
-
-
 
 
 # should be accessible to only owners
@@ -178,6 +168,7 @@ def friend_list():
 def city():
     return render_template('city.html')
 
+
 ######### Restaurant specific functions ############
 
 @flask_app.route('/explore')
@@ -190,9 +181,11 @@ def explore_restaurants():
         return render_template('explore.html', list = restaurants)
     return redirect(url_for('login'))
 
+
 @flask_app.route('/review')
 def review():
     return render_template('review.html')
+
 
 @flask_app.route('/restaurant/<name>')
 def restaurant(name):
