@@ -175,17 +175,23 @@ def city():
 def explore_restaurants():
     user = session.get('user')
     if user is not None:
-        rests = Restaurants()
+        rests = Restaurants("")
         restaurants = rests.get_all()
         #restaurants = [{"name": "First"}, {"name": "Second"}]
         return render_template('explore.html', list = restaurants)
     return redirect(url_for('login'))
 
-
-@flask_app.route('/review')
-def review():
-    return render_template('review.html')
-
+@flask_app.route('/restaurant/review/<name>', methods = ["GET", "POST"])
+def review(name):
+    user = session.get('user')
+    if user is not None:
+        if request.method == "POST":
+            rating = request.form.get('rating')
+            review = request.form.get('review')
+            Restaurants(name).store_rating(rating, review, user)
+            return render_template('home.html')
+        return render_template('review.html', name=name)
+    return redirect(url_for('login'))
 
 @flask_app.route('/restaurant/<name>')
 def restaurant(name):
