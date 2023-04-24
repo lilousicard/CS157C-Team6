@@ -6,6 +6,7 @@ url = os.environ.get("neo4j+s://ea1daa0c.databases.neo4j.io",
 
 graph = Graph("neo4j+s://ea1daa0c.databases.neo4j.io",
               auth=("neo4j", "4CZLYw1ngU7jYPn_LTZi0lUTa7jJoerx2bSb3q8M6lo"))
+# graph = Graph("bolt://localhost:7687", auth=("neo4j", "secret_key"))
 matcher = NodeMatcher(graph)
 rel_matcher = RelationshipMatcher(graph)
 
@@ -29,8 +30,5 @@ def search_node(node, search_term, exclude_term):
 def get_customer(email):
     return matcher.match("Customer", email=email).first()
 
-
-
-
-
-
+def get_restaurant(name):
+    return matcher.match("Restaurant", name=name).first()
