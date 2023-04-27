@@ -8,7 +8,7 @@
 	<main>
 		<section class="restaurant-list">
 		{% if list %}
-          {% for rests in list %}
+          {% for rests in list [:10] %}
             <li>
               <div class="rest-item">
                 <div class="rest-details">
