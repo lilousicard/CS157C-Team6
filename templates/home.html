@@ -7,48 +7,19 @@
 {% block content %}
 	<main>
 		<section class="restaurant-list">
-			<div class="container">
-		<div class="item">
-			<a href="/restaurant"><img src={{ url_for('static', filename='media/rest1.jpg') }} alt="Picture 1" width="200" height="200" ></a>
-			<a href="/restaurant">Picture 1</a>
-		</div>
-		<div class="item">
-			<a href="/restaurant"><img src={{ url_for('static', filename='media/rest2.jpg') }} alt="Picture 2" width="200" height="200"></a>
-			<a href="/restaurant">Picture 2</a>
-		</div>
-		<div class="item">
-			<a href="/restaurant"><img src={{ url_for('static', filename='media/rest3.jpg') }} alt="Picture 3" width="200" height="200"></a>
-			<a href="/restaurant">Picture 3</a>
-		</div>
-		<div class="item">
-			<a href="/restaurant"><img src={{ url_for('static', filename='media/rest4.jpg') }} alt="Picture 4" width="200" height="200"></a>
-			<a href="/restaurant">Picture 4</a>
-		</div>
-		<div class="item">
-			<a href="/restaurant"><img src={{ url_for('static', filename='media/rest5.jpg') }} alt="Picture 5" width="200" height="200"></a>
-			<a href="/restaurant">Picture 5</a>
-		</div>
-		<div class="item">
-			<a href="/restaurant"><img src={{ url_for('static', filename='media/rest6.jpg') }} alt="Picture 6" width="200" height="200"></a>
-			<a href="/restaurant">Picture 6</a>
-		</div>
-		<div class="item">
-			<a href="/restaurant"><img src={{ url_for('static', filename='media/rest7.jpg') }} alt="Picture 7" width="200" height="200"></a>
-			<a href="/restaurant">Picture 7</a>
-		</div>
-		<div class="item">
-			<a href="/restaurant"><img src={{ url_for('static', filename='media/rest8.jpg') }} alt="Picture 8" width="200" height="200"></a>
-			<a href="/restaurant">Picture 8</a>
-		</div>
-		<div class="item">
-			<a href="/restaurant"><img src={{ url_for('static', filename='media/rest9.jpg') }} alt="Picture 9" width="200" height="200"></a>
-			<a href="/restaurant">Picture 9</a>
-		</div>
-		<div class="item">
-			<a href="/restaurant"><img src={{ url_for('static', filename='media/shakeShack.jpg') }} alt="Picture 10" width="200" height="200"></a>
-			<a href="/restaurant">Picture 10</a>
-		</div>
-	</div>
+		{% if list %}
+          {% for rests in list %}
+            <li>
+              <div class="rest-item">
+                <div class="rest-details">
+                  <img src = {{rests.get('image_path')}}/>
+                  <h3> <a href = "restaurant/{{ rests.get('name') }}">{{ rests.get('name') }}</a></h3>
+                  <p class="rests-city">{{rests.get('city')}}</p><br>
+                </div>
+              </div>
+            </li>
+          {% endfor %}
+         {% endif %}
 		</section>
 		<section class="recent-comments">
 			<h2>Recent Comments</h2>
