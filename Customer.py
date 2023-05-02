@@ -83,6 +83,12 @@ class Customer:
         return rel_matcher.match(nodes=[cur_user, other_user],
                                  r_type="FRIENDS")
 
+    def get_all_liked_restaurants(self):
+        cur_user = self.find()
+        #a = graph.cypher.execute("MATCH (a:Person {name:'Tom Hanks})-[acted:ACTED_IN]->(movies:Movie) RETURN a, acted, movies")
+        list = graph.match((cur_user, None), "LIKES")
+        return list
+
 
 
 

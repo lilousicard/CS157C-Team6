@@ -180,9 +180,53 @@ def explore_restaurants():
     if user is not None:
         rests = Restaurants("")
         restaurants = rests.get_all()
+        restaurants = add_user_prefs(restaurants)
         #restaurants = [{"name": "First"}, {"name": "Second"}]
         return render_template('explore.html', list = restaurants)
     return redirect(url_for('login'))
+
+
+def add_user_prefs(restaurants):
+    user = session.get('user')
+    all_liked_restaurants_nodes = Customer(user).get_all_liked_restaurants()
+    liked_restaus_list = []
+    for x in all_liked_restaurants_nodes:
+        liked_restaus_list.append(x.end_node['name'])
+    for x in restaurants:
+        if x['name'] in liked_restaus_list:
+            x['like'] = True
+    return restaurants
+
+
+
+@flask_app.route('/like_restaus', methods = ["POST"])
+def like_restaus():
+    user = session.get('user')
+    if user is not None:
+        if request.method == 'POST':
+            if 'like' in request.form:
+                r_name = request.form['like']
+                Restaurants(r_name).create_like(r_name, user)
+            elif 'unlike' in request.form:
+                r_name = request.form['unlike']
+                Restaurants(r_name).delete_like(r_name, user)
+
+        restaurants = session.get('restaurants')
+        # if restaurants is not None:
+        #     return render_template('explore.html', list=restaurants)
+        # else:
+        rests = Restaurants("")
+        restaurants = rests.get_all()
+        restaurants = add_user_prefs(restaurants)
+        session['restaurants'] = restaurants
+        return render_template('explore.html', list = restaurants)
+    return redirect(url_for('login'))
+
+
+
+    # redirect to the same page
+    # check if restaurant liked or not
+
 
 @flask_app.route('/restaurant/review/<name>', methods = ["GET", "POST"])
 def review(name):
