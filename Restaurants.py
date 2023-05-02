@@ -25,5 +25,15 @@ class Restaurants:
         cust = models.get_customer(user_email)
         graph.create(Relationship(cust, "MADE", rating))
 
+    def create_like(self, r_name, user_email):
+        restau_node = models.get_restaurant(self.name)
+        cust = models.get_customer(user_email)
+        graph.create(Relationship(cust, "LIKES", restau_node))
 
-
+    def delete_like(self, r_name, user_email):
+        query = '''
+               MATCH (a:Customer{email: '%s'})-[r:LIKES]->(b:Restaurant {name: '%s'}) 
+               DELETE r
+               ''' % (user_email, r_name)
+        list = graph.run(query)
+        print(list)
