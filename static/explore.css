@@ -13,12 +13,12 @@ body {
 }
 
 .scrollable-list {
-	overflow-x: auto;
-	white-space: nowrap;
+	display: flex;
+  overflow-x: scroll;
 }
 
 .scrollable-list ul {
-	display: inline-flex;
+	display: flex;
 	padding: 0;
 	margin: 0;
 }
@@ -26,4 +26,31 @@ body {
 .scrollable-list li {
 	list-style: none;
 	padding: 0 10px;
+	box-sizing: border-box;
+}
+
+
+.rest-item {
+  position: relative;
+  width: 500px;
+  height: 0;
+  padding-bottom: 75%; /* adjust to desired aspect ratio */
+  overflow: hidden;
+}
+
+.rest-details {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+}
+.rest-details img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
 }
