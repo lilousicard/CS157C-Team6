@@ -13,6 +13,7 @@
             <li>
               <div class="rest-item">
                 <div class="rest-details">
+                  <img src = {{rests.get('image_path')}}/>
                   <h3> <a href = "restaurant/{{ rests.get('name') }}">{{ rests.get('name') }}</a></h3>
                     <p class="rests-city">Montreal</p><br>
                     <form method="post" action="/like_restaus">
