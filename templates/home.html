@@ -23,11 +23,14 @@
 		</section>
 		<section class="recent-comments">
 			<h2>Recent Comments</h2>
-			{% if reviews %}
-				{% for review in reviews %}
+			{% if reviewList %}
+				{% for review in reviewList [:5]%}
 					<article class="comment">
-						<h3> {{review.get('score')}}</h3>
-	          <p class="rests-city">{{rests.get('city')}}</p><br>   
+						<h3> Restaurant: {{review[3]}}</h3>
+						<h3> Author: {{review[0]}}</h3>
+						<h3> Score: {{review[1]}}</h3>
+						<h3> Comment: {{review[2]}}</h3>
+						<h3> ______________________</h3>
 					</article>
 				{% endfor %}
 			{% endif %}

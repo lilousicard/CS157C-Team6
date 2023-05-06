@@ -1,6 +1,7 @@
 from Restaurants import Restaurants
 import models
 from Customer import Customer
+from Review import Review
 
 from flask import Flask, request, render_template, flash, session,  \
     redirect, url_for
@@ -16,8 +17,9 @@ flask_app.config['STATIC_FOLDER'] = 'static'
 def index():
 	rests = Restaurants("")
 	restaurants = rests.get_all()
-	
-	return render_template('home.html', list = restaurants)
+	rev = Review("","","","")
+	reviews = rev.get_all_review()
+	return render_template('home.html', list = restaurants, reviewList = reviews)
 
 
 @flask_app.route('/register', methods=['GET', 'POST'])
