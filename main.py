@@ -16,7 +16,7 @@ flask_app.config['STATIC_FOLDER'] = 'static'
 def index():
 	rests = Restaurants("")
 	restaurants = rests.get_all()
-	#restaurants = [{"name": "First}, {"name": "Second"}]
+	
 	return render_template('home.html', list = restaurants)
 
 
@@ -75,8 +75,9 @@ def login():
 def account():
     curr_user = models.get_customer(session.get('user'))
     user_friends = Customer(session.get('user')).get_num_friends()
+    review_list = Customer(session.get('user')).get_review();
     return render_template('account.html', curr_user=curr_user,
-                           user_friends=user_friends)
+                           user_friends=user_friends, review = review_list)
 
 
 @flask_app.route('/search', methods=["GET", "POST"])

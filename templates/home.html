@@ -23,18 +23,14 @@
 		</section>
 		<section class="recent-comments">
 			<h2>Recent Comments</h2>
-			<article class="comment">
-				<h3>Comment 1</h3>
-				<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam in metus vel nisi pulvinar pharetra. Aenean non enim tincidunt, aliquet nisi vitae, luctus mauris. Nam euismod mollis nunc ac congue. Ut sit amet dapibus justo. Sed porta tellus vel malesuada maximus.</p>
-			</article>
-			<article class="comment">
-				<h3>Comment 2</h3>
-				<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam in metus vel nisi pulvinar pharetra. Aenean non enim tincidunt, aliquet nisi vitae, luctus mauris. Nam euismod mollis nunc ac congue. Ut sit amet dapibus justo. Sed porta tellus vel malesuada maximus.</p>
-			</article>
-			<article class="comment">
-				<h3>Comment 3</h3>
-				<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam in metus vel nisi pulvinar pharetra. Aenean non enim tincidunt, aliquet nisi vitae, luctus mauris. Nam euismod mollis nunc ac congue. Ut sit amet dapibus justo. Sed porta tellus vel malesuada maximus.</p>
-			</article>
+			{% if reviews %}
+				{% for review in reviews %}
+					<article class="comment">
+						<h3> {{review.get('score')}}</h3>
+	          <p class="rests-city">{{rests.get('city')}}</p><br>   
+					</article>
+				{% endfor %}
+			{% endif %}
 		</section>
 	</main>
 {% endblock %}

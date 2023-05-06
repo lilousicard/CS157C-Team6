@@ -89,7 +89,9 @@ class Customer:
         list = graph.match((cur_user, None), "Likes")
         return list
 
-
-
+    def get_review(self):
+	    cur_user = self.find()
+	    list = graph.match((cur_user, None), "Made")
+	    return list
 
 

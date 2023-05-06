@@ -23,33 +23,9 @@
       <section class="profile-reviews">
         <h2>Reviews</h2>
         <ul>
-          <li>
-            <div class="review-img">
-              <img src="{{ url_for('static', filename='media/rest1.jpg') }}" alt="Restaurant Image">
-            </div>
-            <div class="review-info">
-              <h3>Restaurant Name</h3>
-              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-            </div>
-          </li>
-          <li>
-            <div class="review-img">
-              <img src="{{ url_for('static', filename='media/rest2.jpg') }}" alt="Restaurant Image">
-            </div>
-            <div class="review-info">
-              <h3>Restaurant Name</h3>
-              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-            </div>
-          </li>
-          <li>
-            <div class="review-img">
-              <img src="{{ url_for('static', filename='media/rest3.jpg') }}" alt="Restaurant Image">
-            </div>
-            <div class="review-info">
-              <h3>Restaurant Name</h3>
-              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-            </div>
-          </li>
+          {% for reviews in review %}
+            <p class="restaurant-details">Review: <span class="detail">{{reviews}}</span></p>
+          {% endfor %}
         </ul>
       </section>
     </main>

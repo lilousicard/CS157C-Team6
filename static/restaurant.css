@@ -19,6 +19,10 @@ header {
 .image {
   margin-right: 20px;
 }
+.container .image img {
+  width: 600px;
+  height: 400px;
+}
 
 .restaurant-details {
   margin-bottom: 10px;
