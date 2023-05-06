@@ -236,7 +236,10 @@ def review(name):
             rating = request.form.get('rating')
             review = request.form.get('review')
             Restaurants(name).store_rating(rating, review, user)
-            return render_template('home.html')
+
+            #redirect to the same restaurant page after processing reviwe
+            restau = Restaurants(name).get_all_details()
+            return render_template('restaurant.html', restau=restau)
         return render_template('review.html', name=name)
     return redirect(url_for('login'))
 
