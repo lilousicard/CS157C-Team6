@@ -240,11 +240,14 @@ def review(name):
         return render_template('review.html', name=name)
     return redirect(url_for('login'))
 
+
 @flask_app.route('/restaurant/<name>')
 def restaurant(name):
     user = session.get('user')
+    restau = Restaurants(name).get_all_details()
+    print(restau)
     if user is not None:
-        return render_template('restaurant.html', name = name)
+        return render_template('restaurant.html', restau = restau)
     return redirect(url_for('login'))
 
 
