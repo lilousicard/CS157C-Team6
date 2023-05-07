@@ -24,7 +24,14 @@
         <h2>Reviews</h2>
         <ul>
           {% for reviews in review %}
-            <p class="restaurant-details">Review: <span class="detail">{{reviews}}</span></p>
+            <p class="restaurant-details"> 
+              <span class="detail">
+                <h3> Restaurant: {{reviews[2]}}</h3>
+                <h3> Score: {{reviews[0]}}</h3>
+                <h3> Comment: {{reviews[1]}}</h3>
+                <h3> ______________________</h3>
+              </span>
+            </p>
           {% endfor %}
         </ul>
       </section>

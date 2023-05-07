@@ -11,7 +11,7 @@ class Review:
     def get_all_review(self):
         review_query = "MATCH (c:Customer)-[:Made]->(r:Rating)<-[:Review]-(t:Restaurant) RETURN c.name AS customer, r.Score AS score, r.Comment AS comment, t.name AS restaurant;"
         rating_result = graph.run(review_query).data()
-        print(rating_result)
+        #print(rating_result)
         data = []
         for review in rating_result:
             customer_name = review["customer"]
