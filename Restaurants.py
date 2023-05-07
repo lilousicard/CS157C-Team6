@@ -49,8 +49,14 @@ class Restaurants:
                         MATCH (a:Restaurant{name: '%s'})-[r:Review]->(b:Rating) 
                                RETURN b LIMIT 5
                                ''' % (self.name)
-
+        image_query = '''
+                       MATCH (a:Restaurant{name: '%s'}) RETURN a.image_path
+                       ''' % (self.name)
+        image_result = graph.evaluate(image_query)
+        image_result = image_result[7:]
         restau_details['name'] = self.name
+        restau_details['image_path'] = image_result
+        
         restau_details['city'] = graph.evaluate(city_query)
         rating = graph.run(rating_query).data()
         total_rating = 0

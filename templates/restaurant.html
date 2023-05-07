@@ -9,7 +9,7 @@
 		<h1 class="header">{{restau.name}}</h1>
 	    <div class="container">
 	      <div class="image">
-	        <img src="{{ url_for('static', filename='media/restaurant_pictures/rest3.jpg') }}" alt="Restaurant Image">
+	        <img src="{{ url_for('static', filename= restau.image_path) }}" alt="Restaurant Image"/>
 	      </div>
 	      <div class="details">
 	        <p class="restaurant-details">City: <span class="detail">{{restau.city}}</span></p>

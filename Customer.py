@@ -89,7 +89,22 @@ class Customer:
         list = graph.match((cur_user, None), "Likes")
         return list
 
+    def get_review(self):
+        cur_user = self.find()
+        review_query = '''MATCH (c:Customer{email:'%s'} )-[:Made]->(r:Rating)<-[:Review]-(t:Restaurant)
+	                          RETURN r.Score AS score, r.Comment AS comment, t.name AS restaurant;
+	                          ''' %(self.email)
+        rating_result = graph.run(review_query).data()
+        #print(rating_result)
+        data = []
+        for review in rating_result:
+            rating_score = review["score"]
+            rating_comment = review["comment"]
+            restaurant_name = review["restaurant"]
 
+            row = [rating_score, rating_comment, restaurant_name]
+            data.append(row)
 
+        return data
 
 

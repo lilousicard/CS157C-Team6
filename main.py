@@ -1,6 +1,7 @@
 from Restaurants import Restaurants
 import models
 from Customer import Customer
+from Review import Review
 
 from flask import Flask, request, render_template, flash, session,  \
     redirect, url_for
@@ -14,10 +15,12 @@ flask_app.config['STATIC_FOLDER'] = 'static'
 
 @flask_app.route('/')
 def index():
-    rests = Restaurants("")
-    restaurants = rests.get_all()
-    #  restaurants = [{"name": "First}, {"name": "Second"}]
-    return render_template('home.html', list=restaurants)
+	rests = Restaurants("")
+	restaurants = rests.get_all()
+	rev = Review("","","","")
+	reviews = rev.get_all_review()
+	return render_template('home.html', list = restaurants, reviewList = reviews)
+
 
 
 @flask_app.route('/register', methods=['GET', 'POST'])
@@ -75,8 +78,9 @@ def login():
 def account():
     curr_user = models.get_customer(session.get('user'))
     user_friends = Customer(session.get('user')).get_num_friends()
+    review_list = Customer(session.get('user')).get_review();
     return render_template('account.html', curr_user=curr_user,
-                           user_friends=user_friends)
+                           user_friends=user_friends, review = review_list)
 
 
 @flask_app.route('/search', methods=["GET", "POST"])

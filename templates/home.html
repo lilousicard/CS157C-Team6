@@ -14,7 +14,6 @@
                 <div class="rest-details">
                   <img src = {{rests.get('image_path')}}/>
                   <h3> <a href = "restaurant/{{ rests.get('name') }}">{{ rests.get('name') }}</a></h3>
-                  <p class="rests-city">{{rests.get('city')}}</p><br>
                 </div>
               </div>
             </li>
@@ -23,18 +22,17 @@
 		</section>
 		<section class="recent-comments">
 			<h2>Recent Comments</h2>
-			<article class="comment">
-				<h3>Comment 1</h3>
-				<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam in metus vel nisi pulvinar pharetra. Aenean non enim tincidunt, aliquet nisi vitae, luctus mauris. Nam euismod mollis nunc ac congue. Ut sit amet dapibus justo. Sed porta tellus vel malesuada maximus.</p>
-			</article>
-			<article class="comment">
-				<h3>Comment 2</h3>
-				<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam in metus vel nisi pulvinar pharetra. Aenean non enim tincidunt, aliquet nisi vitae, luctus mauris. Nam euismod mollis nunc ac congue. Ut sit amet dapibus justo. Sed porta tellus vel malesuada maximus.</p>
-			</article>
-			<article class="comment">
-				<h3>Comment 3</h3>
-				<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam in metus vel nisi pulvinar pharetra. Aenean non enim tincidunt, aliquet nisi vitae, luctus mauris. Nam euismod mollis nunc ac congue. Ut sit amet dapibus justo. Sed porta tellus vel malesuada maximus.</p>
-			</article>
+			{% if reviewList %}
+				{% for review in reviewList [:5]%}
+					<article class="comment">
+						<h3> Restaurant: {{review[3]}}</h3>
+						<h3> Author: {{review[0]}}</h3>
+						<h3> Score: {{review[1]}}</h3>
+						<h3> Comment: {{review[2]}}</h3>
+						<h3> ______________________</h3>
+					</article>
+				{% endfor %}
+			{% endif %}
 		</section>
 	</main>
 {% endblock %}
