@@ -22,6 +22,7 @@ def index():
 	return render_template('home.html', list = restaurants, reviewList = reviews)
 
 
+
 @flask_app.route('/register', methods=['GET', 'POST'])
 def register():
     if request.method == 'POST':
