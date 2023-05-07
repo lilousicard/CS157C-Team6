@@ -14,10 +14,10 @@ flask_app.config['STATIC_FOLDER'] = 'static'
 
 @flask_app.route('/')
 def index():
-	rests = Restaurants("")
-	restaurants = rests.get_all()
-	#restaurants = [{"name": "First}, {"name": "Second"}]
-	return render_template('home.html', list = restaurants)
+    rests = Restaurants("")
+    restaurants = rests.get_all()
+    #  restaurants = [{"name": "First}, {"name": "Second"}]
+    return render_template('home.html', list=restaurants)
 
 
 @flask_app.route('/register', methods=['GET', 'POST'])
