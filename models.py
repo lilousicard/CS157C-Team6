@@ -4,8 +4,9 @@ import os
 url = os.environ.get("neo4j+s://ea1daa0c.databases.neo4j.io",
                      "bolt://localhost:7687")
 
-graph = Graph("neo4j+s://ea1daa0c.databases.neo4j.io",
-              auth=("neo4j", "4CZLYw1ngU7jYPn_LTZi0lUTa7jJoerx2bSb3q8M6lo"))
+graph = Graph("neo4j+s://3f3038da.databases.neo4j.io",
+              auth=("neo4j", "NW4jLYvV9n2m47clB6ht7GUMGBKKyhrC5wivIC8nFBo"))
+
 matcher = NodeMatcher(graph)
 rel_matcher = RelationshipMatcher(graph)
 
