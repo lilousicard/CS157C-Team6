@@ -2,25 +2,49 @@
 {% block head %}
   {{ super() }}
   <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='explore.css') }}">
+<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='search.css') }}">
 {% endblock %}
 {% block content %}
-	<div class="restaurants-list">
-    <h2>Restaurants</h2>
-    <div class="scrollable-list">
-      <ul>
-        {% if list %}
-          {% for rests in list %}
-            <li>
-              <div class="rest-item">
-                <div class="rest-details">
-                  <h3> <a href = "restaurant/{{ rests.get('name') }}">{{ rests.get('name') }}</a></h3>
-                  <p class="rests-city">Montreal</p><br>
-                </div>
-              </div>
-            </li>
-          {% endfor %}
-          {% endif %}
-      </ul>
+
+    <div class="search-area">
+      <h1>Search our Site</h1>
+      <form class="search-form" method="post" action="{{ url_for('search') }}">
+          <div class="search-bar">
+            <img src="{{ url_for('static', filename='media/searchicon.png') }}">
+            <input type="text" name="search_term" placeholder="Search term">
+            <button type="submit">Search</button>
+          </div>
+          <div class="search-options">
+            <input type="radio" name="search_category" value="customer"
+                   id="searchCust"
+                   checked />
+            <label for="searchCust" id="siteNameLabel">Customers</label>
+            <input type="radio" name="search_category" value="restaurant"
+                   id="searchRest" />
+            <label for="searchRest">Restaurants</label>
+            <input type="radio" name="search_category" value="city" id="searchCity" />
+            <label for="searchCity">Cities</label>
+          </div>
+      </form>
     </div>
-  </div>
+
+	<div class="restaurants-list">
+      <h2>Restaurants</h2>
+      <div class="scrollable-list">
+        <ul>
+          {% if list %}
+            {% for rests in list %}
+              <li>
+                <div class="rest-item">
+                  <div class="rest-details">
+                    <h3> <a href = "restaurant/{{ rests.get('name') }}">{{ rests.get('name') }}</a></h3>
+                    <p class="rests-city">Montreal</p><br>
+                  </div>
+                </div>
+              </li>
+            {% endfor %}
+            {% endif %}
+        </ul>
+      </div>
+    </div>
 {% endblock %}

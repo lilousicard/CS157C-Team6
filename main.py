@@ -76,7 +76,7 @@ def account():
                            user_friends=user_friends)
 
 
-@flask_app.route('/search', methods=["GET", "POST"])
+@flask_app.route('/search', methods=["POST"])
 def search():
     if request.method == "POST":
         category = request.form['search_category']
@@ -88,7 +88,7 @@ def search():
             session['search_results'] = results
             return redirect(url_for('search_results'))
 
-    return render_template('search.html')
+    return redirect(url_for('explore'))
 
 
 @flask_app.route('/search_results', methods=["GET"])
