@@ -6,45 +6,15 @@
 {% block content %}
 	<main>
 		<div class="search-results">
-			<h2>Search results</h2>
-
 		    {% if results %}
-				  {% for each in results %}
-						<div class="result-item">
-						  	<img src="{{ each['image_path'] }}" alt="Profile Image">
-						  	<div class="result-item-text">
-								<p>Name: {{ each['name'] }}</p>
-								<p>Age: {{ each['age'] }}</p>
-								<p>Gender: {{ each['gender'] }}</p>
-						  	</div>
-							<div class="result-item-btn">
-								<form method="post"
-									  action="{{ url_for('other_profile') }}">
-								  	<input type="hidden" name="email"
-										   value="{{ each['email'] }}">
-									<button type="submit">View Profile</button>
-								</form>
-								{% if session['user'] %}
-									{% if
-								customer.is_friends(each['email']) %}
-									<form method="post"
-										  action="{{ url_for('remove_friend') }}">
-										<input type="hidden" name="email"
-											   value="{{ each['email'] }}">
-										<button>Remove Friend</button>
-									</form>
-									{% else %}
-									<form method="post"
-										  action="{{ url_for('add_friend') }}">
-										<input type="hidden" name="email"
-											   value="{{ each['email'] }}">
-										<button>Add Friend</button>
-									</form>
-									{% endif %}
-								{% endif %}
-							</div>
-						</div>
-				  {% endfor %}
+				{% set results=results %}
+				{% if session.get("search_category") == "customer" %}
+					{% include 'customer_results.html'%}
+				{% elif session.get("search_category") == "restaurant" %}
+  					{% include 'restaurant_results.html' %}
+				{% else %}
+  					{% include 'city_results.html' %}
+				{% endif %}
 			{% else %}
 			  <p>No results found.</p>
 			{% endif %}

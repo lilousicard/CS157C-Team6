@@ -47,7 +47,7 @@ class Customer:
         friend_node = models.get_customer(friend_email)
         # create connection of friend_node was found(Should be no error)
         if friend_node:
-            graph.create(Relationship(cur_user, "FRIENDS", friend_node))
+            graph.create(Relationship(cur_user, "Friends", friend_node))
         else:
             print(f"User {friend_email} doesn't exist")
 
@@ -58,14 +58,14 @@ class Customer:
         # remove connection between the two nodes
         # Don't use graph.delete, will also remove the nodes
         rel = rel_matcher.match(nodes=[cur_user, other_user],
-                                r_type="FRIENDS").first()
+                                r_type="Friends").first()
         graph.separate(rel)
 
     def get_friends(self):
         # return a list of dictionaries with each friend name and
         # image_path information
         cur_user = self.find()
-        friends = rel_matcher.match((cur_user, None), "FRIENDS")
+        friends = rel_matcher.match((cur_user, None), "Friends")
         friend_nodes = [r.end_node for r in friends]
         friend_list = [{'name': node['name'], 'image_path': node[
             'image_path'], 'email':node['email']}
@@ -74,14 +74,14 @@ class Customer:
 
     def get_num_friends(self):
         cur_user = self.find()
-        num_friends = len(graph.match((cur_user, None), "FRIENDS"))
+        num_friends = len(graph.match((cur_user, None), "Friends"))
         return num_friends
 
     def is_friends(self, other_email):
         cur_user = self.find()
         other_user = models.get_customer(other_email)
         return rel_matcher.match(nodes=[cur_user, other_user],
-                                 r_type="FRIENDS")
+                                 r_type="Friends")
 
 
 

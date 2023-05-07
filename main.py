@@ -86,6 +86,7 @@ def search():
             results = models.search_node(category, search_term, session.get(
                 'user'))
             session['search_results'] = results
+            session['search_category'] = category
             return redirect(url_for('search_results'))
 
     return redirect(url_for('explore'))
@@ -95,8 +96,9 @@ def search():
 def search_results():
     results = session.get('search_results')
     customer = Customer(session.get('user'))
+    category = session.get('search_category')
     return render_template('search_results.html', results=results,
-                           customer=customer)
+                           customer=customer, cateogry=category)
 
 
 @flask_app.route('/logout')
