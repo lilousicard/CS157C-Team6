@@ -184,7 +184,7 @@ def city():
 def explore_restaurants():
     user = session.get('user')
     if user is not None:
-        rests = Restaurants()
+        rests = Restaurants("")
         restaurants = rests.get_all()
         cust_city = models.get_cust_city(user)
         city_rests = models.get_rest_in_city(restaurants, cust_city)
