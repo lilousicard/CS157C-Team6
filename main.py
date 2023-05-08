@@ -35,10 +35,10 @@ def register():
         password = request.form.get('password')
         params = {
             'name': request.form.get('name'),
+            'city': request.form.get('city'),
             'password': password,
             'gender': request.form.get('gender'),
             'age': request.form.get('age'),
-            'restaurant_owner': request.form.get('restaurant'),
             'image_path': image_path
         }
 
@@ -83,7 +83,7 @@ def account():
                            user_friends=user_friends, review = review_list)
 
 
-@flask_app.route('/search', methods=["GET", "POST"])
+@flask_app.route('/search', methods=["POST"])
 def search():
     if request.method == "POST":
         category = request.form['search_category']
@@ -93,17 +93,19 @@ def search():
             results = models.search_node(category, search_term, session.get(
                 'user'))
             session['search_results'] = results
+            session['search_category'] = category
             return redirect(url_for('search_results'))
 
-    return render_template('search.html')
+    return redirect(url_for('explore'))
 
 
 @flask_app.route('/search_results', methods=["GET"])
 def search_results():
     results = session.get('search_results')
     customer = Customer(session.get('user'))
+    category = session.get('search_category')
     return render_template('search_results.html', results=results,
-                           customer=customer)
+                           customer=customer, cateogry=category)
 
 
 @flask_app.route('/logout')
@@ -184,9 +186,11 @@ def explore_restaurants():
     if user is not None:
         rests = Restaurants("")
         restaurants = rests.get_all()
-        restaurants = add_user_prefs(restaurants)
-        #restaurants = [{"name": "First"}, {"name": "Second"}]
-        return render_template('explore.html', list = restaurants)
+        cust_city = models.get_cust_city(user)
+        city_rests = models.get_rest_in_city(restaurants, cust_city)
+        # restaurants = [{"name": "First"}, {"name": "Second"}]
+        return render_template('explore.html', list=restaurants,
+                               city_rests=city_rests)
     return redirect(url_for('login'))
 
 
@@ -200,7 +204,6 @@ def add_user_prefs(restaurants):
         if x['name'] in liked_restaus_list:
             x['like'] = True
     return restaurants
-
 
 
 @flask_app.route('/like_restaus', methods = ["POST"])
@@ -225,9 +228,6 @@ def like_restaus():
         session['restaurants'] = restaurants
         return render_template('explore.html', list = restaurants)
     return redirect(url_for('login'))
-
-
-
     # redirect to the same page
     # check if restaurant liked or not
 
@@ -241,7 +241,7 @@ def review(name):
             review = request.form.get('review')
             Restaurants(name).store_rating(rating, review, user)
 
-            #redirect to the same restaurant page after processing reviwe
+            # redirect to the same restaurant page after processing reviwe
             restau = Restaurants(name).get_all_details()
             return render_template('restaurant.html', restau=restau)
         return render_template('review.html', name=name)

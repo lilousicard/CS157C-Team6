@@ -35,8 +35,8 @@ class Restaurants:
                MATCH (a:Customer{email: '%s'})-[r:Likes]->(b:Restaurant {name: '%s'}) 
                DELETE r
                ''' % (user_email, r_name)
-        list = graph.run(query)
-        print(list)
+        del_list = graph.run(query)
+        print(del_list)
 
     def get_all_details(self):
         restau_details = {}
@@ -63,13 +63,12 @@ class Restaurants:
         avg_rating = 0
         reviews = []
         for each in rating:
-            total_rating += (int)(each['b']['Score'] or 0)
+            total_rating += int(each['b']['Score'] or 0)
             reviews.append(each['b']['Comment'])
 
-        if(len(rating) != 0):
+        if len(rating) != 0:
             avg_rating = round(total_rating/len(rating), 1)
         restau_details['rating'] = avg_rating
         restau_details['reviews'] = reviews
         return restau_details
-
 

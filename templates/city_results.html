@@ -1,0 +1,19 @@
+<h2>Cities</h2>
+{% for each in results %}
+<div class="result-item">
+    <img src="{{ each['image_path'] }}" alt="Profile Image">
+    <div class="result-item-text">
+        <p>City: {{ each['name'] }}</p>
+        <p>State: {{ each['state'] }}</p>
+        <p>Country: {{ each['country'] }}</p>
+    </div>
+    <div class="result-item-btn">
+<!--        <form method="post"-->
+<!--              action="{{ url_for('other_profile') }}">-->
+<!--            <input type="hidden" name="email"-->
+<!--                   value="{{ each['email'] }}">-->
+<!--            <button type="submit">View Profile</button>-->
+<!--        </form>-->
+    </div>
+</div>
+{% endfor %}

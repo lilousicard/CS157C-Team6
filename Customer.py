@@ -23,21 +23,27 @@ class Customer:
         password = params.get("password")
         age = params.get("age")
         gender = params.get("gender")
-        owner = params.get("restaurant_owner")
         image_path = params.get("image_path")
+
+        # formats the city so that the first letter of each word is capitalized
+        city = params.get("city").title()
+
         # encrypt pass later with bcrypt
         if not self.find():
-            if not owner:
-                cust = Node("Customer", email=self.email,
-                            name=name, password=password, gender=gender,
-                            age=age, image_path=image_path)
-                graph.create(cust)
-                return True
+            cust = Node("Customer", email=self.email,
+                        name=name, password=password, gender=gender,
+                        age=age, image_path=image_path)
+            graph.create(cust)
+            # create city node if not exists
+            city_node = matcher.match("City", name=city).first()
+            if not city_node:
+                new_city = Node("City", name=city)
+                graph.create(new_city)
+                # create Resides relationship for the new city
+                graph.create(Relationship(cust, "Reside", new_city))
             else:
-                owner = Node("Owner", email=self.email, name=name,
-                             password=password, gender=gender, age=age, image_path=image_path)
-                graph.create(owner)
-                return True
+                graph.create(Relationship(cust, "Reside", city_node))
+            return True
         else:
             return False
 
@@ -85,17 +91,18 @@ class Customer:
 
     def get_all_liked_restaurants(self):
         cur_user = self.find()
-        #a = graph.cypher.execute("MATCH (a:Person {name:'Tom Hanks})-[acted:ACTED_IN]->(movies:Movie) RETURN a, acted, movies")
-        list = graph.match((cur_user, None), "Likes")
-        return list
+        # a = graph.cypher.execute("MATCH (a:Person {name:'Tom Hanks})-[
+        # acted:ACTED_IN]->(movies:Movie) RETURN a, acted, movies")
+        liked_rest = graph.match((cur_user, None), "Likes")
+        return liked_rest
 
     def get_review(self):
         cur_user = self.find()
-        review_query = '''MATCH (c:Customer{email:'%s'} )-[:Made]->(r:Rating)<-[:Review]-(t:Restaurant)
-	                          RETURN r.Score AS score, r.Comment AS comment, t.name AS restaurant;
-	                          ''' %(self.email)
+        review_query = '''MATCH (c:Customer{email:'%s'} )-[:Made]->(
+        r:Rating) <-[:Review]-(t:Restaurant) RETURN r.Score AS score, 
+        r.Comment AS comment, t.name AS restaurant; ''' % self.email
         rating_result = graph.run(review_query).data()
-        #print(rating_result)
+        # print(rating_result)
         data = []
         for review in rating_result:
             rating_score = review["score"]
@@ -106,5 +113,6 @@ class Customer:
             data.append(row)
 
         return data
+
 
 
