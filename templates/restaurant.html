@@ -6,18 +6,20 @@
 {% endblock %}
 {% block content %}
 	<main>
-		<div class="title-container">
-			<h2 class="page-title">Restaurant Info Page</h2>
-		</div>
-		
-		<section class="restaurant-info">
-			<img src="{{ url_for('static', filename='media/rest3.jpg') }}" alt="Restaurant Image">
-			<h2>{{name}}</h2>
-			<p class="restaurant-details">City: <span class="detail">City name</span></p>
-			<p class="restaurant-details">Rate: <span class="detail">4.5</span></p>
-			<p class="restaurant-details">Review: <span class="detail">"Amazing food and great service!"</span></p>
-			<p class="restaurant-details">Review: <span class="detail">"Loved it"</span></p>
-			<p class="restaurant-details"><a href = "/review">Add Review</a></p>
-		</section>
+		<h1 class="header">{{restau.name}}</h1>
+	    <div class="container">
+	      <div class="image">
+	        <img src="{{ url_for('static', filename= restau.image_path) }}" alt="Restaurant Image"/>
+	      </div>
+	      <div class="details">
+	        <p class="restaurant-details">City: <span class="detail">{{restau.city}}</span></p>
+	        <p class="restaurant-details">Rate: <span class="detail">{{restau.rating}}</span></p>
+
+			  {% for reviews in restau.reviews %}
+	        	<p class="restaurant-details">Review: <span class="detail">{{reviews}}</span></p>
+			  {% endfor %}
+	        <p class="restaurant-details"><a href="/restaurant/review/{{restau.name}}">Add Review</a></p>
+	      </div>
+	    </div>
 	</main>
 {% endblock %}

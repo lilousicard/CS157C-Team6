@@ -1,81 +1,43 @@
 header {
-	background-color: #ea8c55;
-	display: flex;
-	align-items: center;
-	padding: 10px;
+  background-color: #ea8c55;
+  display: flex;
+  align-items: center;
+  padding: 10px;
+}
+.header {
+  font-weight: bold;
+  text-align: center;
+  margin-top: 20px;
 }
 
-body {
-	background-color: #ea8c55;
-	color: white;
-	font-size: 1.2em;
-	font-family: Arial, sans-serif;
-	margin: 0;
-	padding: 0;
+.container {
+  display: flex;
+  align-items: center;
+  margin-top: 30px;
 }
 
-
-.logo {
-	flex: 1;
+.image {
+  margin-right: 20px;
 }
-
-.logo h1 {
-	margin: 0;
-	font-size: 32px;
-	color:  white;
-}
-
-.title-container {
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	height: 100px;
-}
-
-.page-title {
-	font-size: 3em;
-	color:  white;
-}
-
-.header-form {
-	flex: 1;
-	text-align: right;
-}
-
-.header-form button {
-	background-color: #fff;
-	border: none;
-	padding: 8px 12px;
-	font-size: 16px;
-	color: #333;
-	cursor: pointer;
-	margin-left: 10px;
-}
-
-.header-form button:hover {
-	background-color: #333;
-	color: #fff;
-}
-
-.restaurant-info {
-	text-align: center;
-}
-
-.restaurant-info img {
-	max-width: 100%;
-	height: auto;
-	margin-bottom: 1em;
-}
-
-.restaurant-info h2 {
-	font-size: 2em;
-	margin: 0;
+.container .image img {
+  width: 600px;
+  height: 400px;
 }
 
 .restaurant-details {
-	margin: 1em 0;
+  margin-bottom: 10px;
 }
 
 .detail {
-	font-weight: bold;
+  font-weight: bold;
+  margin-left: 5px;
+}
+
+a {
+  color: blue;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
 }

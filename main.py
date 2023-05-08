@@ -1,6 +1,7 @@
 from Restaurants import Restaurants
 import models
 from Customer import Customer
+from Review import Review
 
 from flask import Flask, request, render_template, flash, session,  \
     redirect, url_for
@@ -14,7 +15,12 @@ flask_app.config['STATIC_FOLDER'] = 'static'
 
 @flask_app.route('/')
 def index():
-    return render_template('home.html')
+	rests = Restaurants("")
+	restaurants = rests.get_all()
+	rev = Review("","","","")
+	reviews = rev.get_all_review()
+	return render_template('home.html', list = restaurants, reviewList = reviews)
+
 
 
 @flask_app.route('/register', methods=['GET', 'POST'])
@@ -72,8 +78,9 @@ def login():
 def account():
     curr_user = models.get_customer(session.get('user'))
     user_friends = Customer(session.get('user')).get_num_friends()
+    review_list = Customer(session.get('user')).get_review();
     return render_template('account.html', curr_user=curr_user,
-                           user_friends=user_friends)
+                           user_friends=user_friends, review = review_list)
 
 
 @flask_app.route('/search', methods=["POST"])
@@ -187,16 +194,67 @@ def explore_restaurants():
     return redirect(url_for('login'))
 
 
-@flask_app.route('/review')
-def review():
-    return render_template('review.html')
+def add_user_prefs(restaurants):
+    user = session.get('user')
+    all_liked_restaurants_nodes = Customer(user).get_all_liked_restaurants()
+    liked_restaus_list = []
+    for x in all_liked_restaurants_nodes:
+        liked_restaus_list.append(x.end_node['name'])
+    for x in restaurants:
+        if x['name'] in liked_restaus_list:
+            x['like'] = True
+    return restaurants
+
+
+@flask_app.route('/like_restaus', methods = ["POST"])
+def like_restaus():
+    user = session.get('user')
+    if user is not None:
+        if request.method == 'POST':
+            if 'like' in request.form:
+                r_name = request.form['like']
+                Restaurants(r_name).create_like(r_name, user)
+            elif 'unlike' in request.form:
+                r_name = request.form['unlike']
+                Restaurants(r_name).delete_like(r_name, user)
+
+        restaurants = session.get('restaurants')
+        # if restaurants is not None:
+        #     return render_template('explore.html', list=restaurants)
+        # else:
+        rests = Restaurants("")
+        restaurants = rests.get_all()
+        restaurants = add_user_prefs(restaurants)
+        session['restaurants'] = restaurants
+        return render_template('explore.html', list = restaurants)
+    return redirect(url_for('login'))
+    # redirect to the same page
+    # check if restaurant liked or not
+
+
+@flask_app.route('/restaurant/review/<name>', methods = ["GET", "POST"])
+def review(name):
+    user = session.get('user')
+    if user is not None:
+        if request.method == "POST":
+            rating = request.form.get('rating')
+            review = request.form.get('review')
+            Restaurants(name).store_rating(rating, review, user)
+
+            # redirect to the same restaurant page after processing reviwe
+            restau = Restaurants(name).get_all_details()
+            return render_template('restaurant.html', restau=restau)
+        return render_template('review.html', name=name)
+    return redirect(url_for('login'))
 
 
 @flask_app.route('/restaurant/<name>')
 def restaurant(name):
     user = session.get('user')
+    restau = Restaurants(name).get_all_details()
+    print(restau)
     if user is not None:
-        return render_template('restaurant.html', name = name)
+        return render_template('restaurant.html', restau = restau)
     return redirect(url_for('login'))
 
 

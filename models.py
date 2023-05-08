@@ -7,6 +7,10 @@ url = os.environ.get("neo4j+s://ea1daa0c.databases.neo4j.io",
 graph = Graph("neo4j+s://3f3038da.databases.neo4j.io",
               auth=("neo4j", "NW4jLYvV9n2m47clB6ht7GUMGBKKyhrC5wivIC8nFBo"))
 
+# graph = Graph("neo4j+s://ea1daa0c.databases.neo4j.io",
+#               auth=("neo4j", "4CZLYw1ngU7jYPn_LTZi0lUTa7jJoerx2bSb3q8M6lo"))
+
+
 matcher = NodeMatcher(graph)
 rel_matcher = RelationshipMatcher(graph)
 
@@ -49,6 +53,6 @@ def get_cust_city(customer):
     return city_rel.end_node.get("name")
 
 
-
-
+def get_restaurant(name):
+    return matcher.match("Restaurant", name=name).first()
 

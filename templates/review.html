@@ -6,14 +6,15 @@
 {% block content %}
     <form action="" method="post">
       <div class="form-group">
-        <label for="review">Review:</label>
-        <textarea id="review" name="review" rows="4" cols="50"></textarea>
+          <h2>{{name}}</h2>
       </div>
       <div class="form-group">
         <label for="rating">Rating:</label>
         <input type="number" id="rating" name="rating" min="0" max="5">
         <br>
-        <button type="submit">Submit</button>
+          <label for="review">Review:</label>
+          <textarea id="review" name="review" rows="4" cols="50"></textarea>
+          <button type="submit">Submit</button>
       </div>
     </form>
 {% endblock %}
