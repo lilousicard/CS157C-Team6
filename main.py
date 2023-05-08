@@ -190,7 +190,7 @@ def explore_restaurants():
         city_rests = models.get_rest_in_city(restaurants, cust_city)
         # restaurants = [{"name": "First"}, {"name": "Second"}]
         return render_template('explore.html', list=restaurants,
-                               city_rests=city_rests)
+                               city_rests=city_rests, cust_city=cust_city)
     return redirect(url_for('login'))
 
 
@@ -232,7 +232,7 @@ def like_restaus():
     # check if restaurant liked or not
 
 
-@flask_app.route('/restaurant/review/<name>', methods = ["GET", "POST"])
+@flask_app.route('/restaurant/review/<name>', methods=["GET","POST"])
 def review(name):
     user = session.get('user')
     if user is not None:
@@ -248,7 +248,7 @@ def review(name):
     return redirect(url_for('login'))
 
 
-@flask_app.route('/restaurant/<name>')
+@flask_app.route('/restaurant/<name>', methods=["GET","POST"])
 def restaurant(name):
     user = session.get('user')
     restau = Restaurants(name).get_all_details()

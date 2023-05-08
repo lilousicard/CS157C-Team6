@@ -7,12 +7,9 @@
         <p>Type: {{ each['type'] }}</p>
     </div>
     <div class="result-item-btn">
-<!--        <form method="post"-->
-<!--              action="{{ url_for('other_profile') }}">-->
-<!--            <input type="hidden" name="email"-->
-<!--                   value="{{ each['email'] }}">-->
-<!--            <button type="submit">View Profile</button>-->
-<!--        </form>-->
+        <form method="post" action="{{ url_for('restaurant', name=each.get('name')) }}">
+            <button type="submit">View Restaurant</button>
+        </form>
     </div>
 </div>
 {% endfor %}
