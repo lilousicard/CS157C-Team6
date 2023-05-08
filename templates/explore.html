@@ -32,24 +32,24 @@
       <h2>Restaurants</h2>
       <div class="scrollable-list">
         <ul>
-          {% if list %}
-            {% for rests in list %}
+          {% if rests_to_city %}
+            {% for restaurant, city_name in rests_to_city.items() %}
               <li>
                 <div class="rest-item">
-                  <div class="rest-details">
-                    <h3> <a href = "restaurant/{{ rests.get('name') }}">{{ rests.get('name') }}</a></h3>
-                    <p class="rests-city">Montreal</p><br>
-                  </div>
+                    <div class="rest-details">
+                        <h3> <a href="restaurant/{{ restaurant.get('name') }}">{{ restaurant.get('name') }}</a></h3>
+                        <p class="rests-city">{{ city_name }}</p><br>
+                    </div>
                 </div>
               </li>
             {% endfor %}
-            {% endif %}
+          {% endif %}
         </ul>
       </div>
     </div>
 
     <div class="restaurants-inCity">
-      <h2>Check out these restaurants in your city!</h2>
+      <h2>Check out these Restaurants in {{ cust_city }}!</h2>
         <div class="scrollable-list">
         <ul>
           {% if city_rests %}
@@ -58,12 +58,12 @@
                 <div class="rest-item">
                   <div class="rest-details">
                     <h3> <a href = "restaurant/{{ rests.get('name') }}">{{ rests.get('name') }}</a></h3>
-                    <p class="rests-city">Montreal</p><br>
+                    <p class="rests-city">{{ cust_city }}</p><br>
                   </div>
                 </div>
               </li>
             {% endfor %}
-            {% endif %}
+          {% endif %}
         </ul>
       </div>
     </div>

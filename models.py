@@ -37,6 +37,7 @@ def get_customer(email):
 
 
 def get_rest_in_city(restaurants, city):
+    # Returns the city that the restaurant is Located in
     # get the city node
     city_node = matcher.match("City", name=city).first()
 
@@ -48,6 +49,7 @@ def get_rest_in_city(restaurants, city):
 
 
 def get_cust_city(customer):
+    # returns the city that the customer Reside in
     cust_node = matcher.match("Customer", email=customer).first()
     city_rel = rel_matcher.match(nodes=(cust_node,), r_type="Reside").first()
     return city_rel.end_node.get("name")
@@ -56,3 +58,7 @@ def get_cust_city(customer):
 def get_restaurant(name):
     return matcher.match("Restaurant", name=name).first()
 
+
+def get_rest_city(rest_node):
+    city_rel = rel_matcher.match(nodes=(rest_node,), r_type="Location").first()
+    return city_rel.end_node.get("name")
