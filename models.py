@@ -58,3 +58,8 @@ def get_cust_city(customer):
 def get_restaurant(name):
     return matcher.match("Restaurant", name=name).first()
 
+
+def get_rest_city(rest_node):
+    return rel_matcher.match(nodes=(rest_node,), r_type="Located").first(). \
+        end_node.get("name")
+
