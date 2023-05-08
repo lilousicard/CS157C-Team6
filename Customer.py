@@ -35,7 +35,8 @@ class Customer:
                 return True
             else:
                 owner = Node("Owner", email=self.email, name=name,
-                             password=password, gender=gender, age=age, image_path=image_path)
+                             password=password, gender=gender, age=age,
+                             image_path=image_path)
                 graph.create(owner)
                 return True
         else:

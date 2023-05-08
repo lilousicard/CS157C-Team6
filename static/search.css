@@ -2,6 +2,10 @@
   text-align:center;
 }
 
+.search-area h1 {
+  color: #ea8c55;
+}
+
 .search-form {
   background-color:#ea8c55;
   padding:50px 50px;

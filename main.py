@@ -179,8 +179,10 @@ def explore_restaurants():
     if user is not None:
         rests = Restaurants()
         restaurants = rests.get_all()
-        #restaurants = [{"name": "First"}, {"name": "Second"}]
-        return render_template('explore.html', list = restaurants)
+        city_rests = models.get_rest_in_city(restaurants, "Boston")
+        # restaurants = [{"name": "First"}, {"name": "Second"}]
+        return render_template('explore.html', list=restaurants,
+                               city_rests=city_rests)
     return redirect(url_for('login'))
 
 

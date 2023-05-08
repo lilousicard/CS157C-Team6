@@ -27,3 +27,18 @@ body {
 	list-style: none;
 	padding: 0 10px;
 }
+
+.scrollable-list a {
+    text-decoration: underline;
+    color: rgb(0,0,238);
+}
+
+.restaurants-inCity {
+    width: 80%;
+    margin: 100px auto;
+}
+
+.restaurants-inCity h2 {
+    margin-bottom: 30px;
+    color: #ea8c55;
+}

@@ -11,3 +11,4 @@ class Restaurants:
     def get_all():
         rests = matcher.match("Restaurant")
         return list(rests)
+
