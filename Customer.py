@@ -23,22 +23,27 @@ class Customer:
         password = params.get("password")
         age = params.get("age")
         gender = params.get("gender")
-        owner = params.get("restaurant_owner")
         image_path = params.get("image_path")
+
+        # formats the city so that the first letter of each word is capitalized
+        city = params.get("city").title()
+
         # encrypt pass later with bcrypt
         if not self.find():
-            if not owner:
-                cust = Node("Customer", email=self.email,
-                            name=name, password=password, gender=gender,
-                            age=age, image_path=image_path)
-                graph.create(cust)
-                return True
+            cust = Node("Customer", email=self.email,
+                        name=name, password=password, gender=gender,
+                        age=age, image_path=image_path)
+            graph.create(cust)
+            # create city node if not exists
+            city_node = matcher.match("City", name=city).first()
+            if not city_node:
+                new_city = Node("City", name=city)
+                graph.create(new_city)
+                # create Resides relationship for the new city
+                graph.create(Relationship(cust, "Reside", new_city))
             else:
-                owner = Node("Owner", email=self.email, name=name,
-                             password=password, gender=gender, age=age,
-                             image_path=image_path)
-                graph.create(owner)
-                return True
+                graph.create(Relationship(cust, "Reside", city_node))
+            return True
         else:
             return False
 

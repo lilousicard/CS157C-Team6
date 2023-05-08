@@ -29,10 +29,10 @@ def register():
         password = request.form.get('password')
         params = {
             'name': request.form.get('name'),
+            'city': request.form.get('city'),
             'password': password,
             'gender': request.form.get('gender'),
             'age': request.form.get('age'),
-            'restaurant_owner': request.form.get('restaurant'),
             'image_path': image_path
         }
 
