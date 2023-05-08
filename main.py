@@ -186,14 +186,14 @@ def explore_restaurants():
     if user is not None:
         rests = Restaurants("")
         restaurants = rests.get_all()
-        # dictionary where each restaurant node is mapped to their city string
-        restaurants = rests.get_all()
+        # dictionary where each restaurant node is mapped to their city
+        # name as a string
         rests_to_city = {r: models.get_rest_city(r) for r in restaurants}
 
         cust_city = models.get_cust_city(user)
         rest_in_city = models.get_rest_in_city(restaurants, cust_city)
         # restaurants = [{"name": "First"}, {"name": "Second"}]
-        return render_template('explore.html', list=restaurants,
+        return render_template('explore.html', rests_to_city=rests_to_city,
                                city_rests=rest_in_city, cust_city=cust_city)
     return redirect(url_for('login'))
 

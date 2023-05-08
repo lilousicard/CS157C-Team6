@@ -60,6 +60,5 @@ def get_restaurant(name):
 
 
 def get_rest_city(rest_node):
-    return rel_matcher.match(nodes=(rest_node,), r_type="Located").first(). \
-        end_node.get("name")
-
+    city_rel = rel_matcher.match(nodes=(rest_node,), r_type="Location").first()
+    return city_rel.end_node.get("name")
