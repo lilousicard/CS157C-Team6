@@ -18,7 +18,9 @@
                 </div>
                 <div class="friend-details">
                   <h3>{{ friend.get('name') }}</h3>
-                  <p class="friend-city">Montreal</p><br>
+                  <p class="friend-city">
+                    <h5>{{models.get_cust_city(friend.get('email'))}}</h5>
+                  </p><br>
                   {% if friend.get('email') != session.get('user') %}
                   <form method="post" action="{{ url_for('other_profile') }}">
                     <input type="hidden" name="email"

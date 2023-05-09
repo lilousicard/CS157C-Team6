@@ -171,7 +171,7 @@ def friend_list():
     if user is None:
         user = session.get('user')
     friends = Customer(user).get_friends()
-    return render_template('friendsPage.html', user_friend_list=friends)
+    return render_template('friendsPage.html', user_friend_list=friends, models = models)
 
 
 @flask_app.route('/city')
