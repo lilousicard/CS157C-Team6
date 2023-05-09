@@ -157,8 +157,9 @@ def other_profile():
     other_user = models.get_customer(email)
     customer = Customer(session.get('user'))
     user_friends = Customer(email).get_num_friends()
+    review_list = Customer(email).get_review();
     return render_template('otherProfile.html', other_user=other_user,
-                           customer=customer, user_friends=user_friends)
+                           customer=customer, user_friends=user_friends, review = review_list)
 
 
 @flask_app.route('/friendsPage')
