@@ -237,15 +237,24 @@ def like_restaus():
 
         #Same logic as reireviing all restaurants from explore_restaurants function
         rests = Restaurants("")
+
+        start_time = time.time()
         restaurants = rests.get_all()
         restaurants = add_user_prefs(restaurants)
-        # dictionary where each restaurant node is mapped to their city
-        # name as a string
-        rests_to_city = {r: models.get_rest_city(r) for r in restaurants}
+
+        print(f"Got restaurants in: {time.time() - start_time} seconds")
+
+        # dictionary where each restaurant node is mapped to their city name as a string
+        rests_to_city = models.map_rest_to_city(restaurants)
+        print(f"Got restaurants to city: {time.time() - start_time} seconds")
 
         cust_city = models.get_cust_city(user)
-        rest_in_city = models.get_rest_in_city(restaurants, cust_city)
+        print(f"Got cust_city: {time.time() - start_time} seconds")
+
+        rest_in_city = [r for r, c in rests_to_city.items() if c == cust_city]
         rest_in_city = add_user_prefs(rest_in_city)
+        print(f"Got rests in city: {time.time() - start_time} seconds")
+
         # restaurants = [{"name": "First"}, {"name": "Second"}]
         return render_template('explore.html', rests_to_city=rests_to_city,
                                city_rests=rest_in_city, cust_city=cust_city)
