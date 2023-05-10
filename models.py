@@ -60,5 +60,16 @@ def get_restaurant(name):
 
 
 def get_rest_city(rest_node):
+    print(f"Searching city for {rest_node.get('name')}")
+    rel_matcher.get()
     city_rel = rel_matcher.match(nodes=(rest_node,), r_type="Location").first()
+    print(city_rel)
     return city_rel.end_node.get("name")
+
+
+def map_rest_to_city(rest_list):
+    city_rels = dict()
+    for r in rest_list:
+
+
+    return {r: get_rest_city(r) for r in rest_list}
