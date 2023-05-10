@@ -53,6 +53,26 @@ def register():
             return redirect(url_for('index'))
 
     return render_template('register.html')
+    
+@flask_app.route('/editProfile', methods=['GET', 'POST'])
+def edit():
+    user = session.get('user')
+    if user is not None:
+        curr_user = models.get_customer(session.get('user'))
+        city_name = models.get_cust_city(user)
+        if request.method == 'POST':
+            params = {
+                'name': request.form.get('name'),
+                'city': request.form.get('city'),
+                'age': request.form.get('age')
+            }
+            if not Customer(session.get('user')).edit(params):
+                flash('There was a problem editing your info')
+            else:
+	            return redirect(url_for('index'))
+        return render_template('editInfo.html', curr_user=curr_user, city_name = city_name)
+    return redirect(url_for('login'))
+	
 
 
 def home():

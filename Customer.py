@@ -114,5 +114,35 @@ class Customer:
 
         return data
 
-
+    def edit(self, params):
+        cust = self.find()
+        query = '''MATCH (c:Customer{email:'%s'})''' % self.email
+        set_clauses = []
+        # Check if each field is present and not None in params
+        if 'name' in params and params['name'] is not None:
+            set_clauses.append("c.name = $name")
+        if 'city' in params and params['city'] is not None:
+            delete = '''
+                MATCH (c:Customer{email:'%s'})-[r:Reside]->()
+                DELETE r''' % self.email
+            graph.run(delete)
+            city_node = matcher.match("City", name=params['city']).first()
+            if not city_node:
+                new_city = Node("City", name= params['city'])
+                graph.create(new_city)
+			    # create Resides relationship for the new city
+                graph.create(Relationship(cust, "Reside", new_city))
+            else:
+                graph.create(Relationship(cust, "Reside", city_node))
+        if 'age' in params and params['age'] is not None:
+            set_clauses.append("c.age = $age")
+        # Append the set clauses to the query if any exist
+        if set_clauses:
+            query += " SET " + ", ".join(set_clauses)
+            result = graph.run(query, **params)
+		    # Check if the query was successful
+            return True
+        else:
+            # No fields to update
+            return True
 
