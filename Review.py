@@ -9,7 +9,7 @@ class Review:
         self.comment = comment
 
     def get_all_review(self):
-        review_query = "MATCH (c:Customer)-[:Made]->(r:Rating)<-[:Review]-(t:Restaurant) RETURN c.name AS customer, r.Score AS score, r.Comment AS comment, t.name AS restaurant;"
+        review_query = "MATCH (c:Customer)-[:Made]->(r:Rating)<-[:Review]-(t:Restaurant) RETURN c.name AS customer, r.Score AS score, r.Comment AS comment, t.name AS restaurant ORDER BY ID(r) DESC;"
         rating_result = graph.run(review_query).data()
         #print(rating_result)
         data = []
