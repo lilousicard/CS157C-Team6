@@ -197,7 +197,7 @@ def explore_restaurants():
         print(f"Got restaurants to city: {time.time()-start_time} seconds")
         cust_city = models.get_cust_city(user)
         print(f"Got cust_city: {time.time()-start_time} seconds")
-        rest_in_city = models.get_rest_in_city(restaurants, cust_city)
+        rest_in_city = [r for r, c in rests_to_city.items() if c == cust_city]
         print(f"Got rests in city: {time.time()-start_time} seconds")
         # restaurants = [{"name": "First"}, {"name": "Second"}]
         return render_template('explore.html', rests_to_city=rests_to_city,

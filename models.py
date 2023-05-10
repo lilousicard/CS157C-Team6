@@ -36,23 +36,13 @@ def get_customer(email):
     return matcher.match("Customer", email=email).first()
 
 
-def get_rest_in_city(restaurants, city):
-    # Returns the city that the restaurant is Located in
-    # get the city node
-    city_node = matcher.match("City", name=city).first()
-
-    # get all restaurants and see which ones are located in <city>
-    city_rest = [r for r in restaurants if
-                 rel_matcher.match(nodes=(r, city_node), r_type="Location")]
-
-    return city_rest
-
-
 def get_cust_city(customer):
     # returns the city that the customer Reside in
-    cust_node = matcher.match("Customer", email=customer).first()
-    city_rel = rel_matcher.match(nodes=(cust_node,), r_type="Reside").first()
-    return city_rel.end_node.get("name")
+    query = "match (r:Customer {email: $cust_email}) - [:Reside] -> (c:City) return c.name"
+    return graph.evaluate(query, cust_email=customer)
+    # cust_node = matcher.match("Customer", email=customer).first()
+    # city_rel = rel_matcher.match(nodes=(cust_node,), r_type="Reside").first()
+    # return city_rel.end_node.get("name")
 
 
 def get_restaurant(name):
@@ -60,16 +50,11 @@ def get_restaurant(name):
 
 
 def get_rest_city(rest_node):
-    print(f"Searching city for {rest_node.get('name')}")
-    rel_matcher.get()
-    city_rel = rel_matcher.match(nodes=(rest_node,), r_type="Location").first()
-    print(city_rel)
-    return city_rel.end_node.get("name")
+    # Finds what city a restaurant is located in, returns the city name as a string
+    query = "match (r:Restaurant {name: $rest_name}) - [:Location] -> (c:City) return c.name"
+    return graph.evaluate(query, rest_name=rest_node.get("name"))
 
 
 def map_rest_to_city(rest_list):
-    city_rels = dict()
-    for r in rest_list:
-
-
+    # Take a list of restaurants and maps them to their respective cities
     return {r: get_rest_city(r) for r in rest_list}
