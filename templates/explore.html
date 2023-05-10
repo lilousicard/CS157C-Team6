@@ -40,7 +40,15 @@
                         <img src = {{restaurant.get('image_path')}}/>
                         <h3> <a href="restaurant/{{ restaurant.get('name') }}">{{ restaurant.get('name') }}</a></h3>
                         <p class="rests-city">{{ city_name }}</p><br>
-                    </div>
+
+                    <form method="post" action="/like_restaus">
+                      {% if restaurant.get('like') %}
+                        <button type="submit" name="unlike" value= "{{ restaurant.get('name') }}"> UnLike </button>
+                      {% else %}
+                        <button type="submit" name="like" value= "{{ restaurant.get('name') }}"> Like </button>
+                      {% endif %}
+                    </form>
+
                 </div>
               </li>
             {% endfor %}
@@ -61,6 +69,15 @@
                     <img src = {{rests.get('image_path')}}/>
                     <h3> <a href = "restaurant/{{ rests.get('name') }}">{{ rests.get('name') }}</a></h3>
                     <p class="rests-city">{{ cust_city }}</p><br>
+
+                       <form method="post" action="/like_restaus">
+                      {% if rests.get('like') %}
+                        <button type="submit" name="unlike" value= "{{ rests.get('name') }}"> UnLike </button>
+                      {% else %}
+                        <button type="submit" name="like" value= "{{ rests.get('name') }}"> Like </button>
+                      {% endif %}
+                    </form>
+
                   </div>
                 </div>
               </li>

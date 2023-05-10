@@ -190,6 +190,8 @@ def explore_restaurants():
 
         start_time = time.time()
         restaurants = rests.get_all()
+        restaurants = add_user_prefs(restaurants)
+
         print(f"Got restaurants in: {time.time()-start_time} seconds")
 
         # dictionary where each restaurant node is mapped to their city name as a string
@@ -200,6 +202,7 @@ def explore_restaurants():
         print(f"Got cust_city: {time.time()-start_time} seconds")
 
         rest_in_city = [r for r, c in rests_to_city.items() if c == cust_city]
+        rest_in_city = add_user_prefs(rest_in_city)
         print(f"Got rests in city: {time.time()-start_time} seconds")
 
         # restaurants = [{"name": "First"}, {"name": "Second"}]
@@ -232,15 +235,8 @@ def like_restaus():
                 r_name = request.form['unlike']
                 Restaurants(r_name).delete_like(r_name, user)
 
-        restaurants = session.get('restaurants')
-        # if restaurants is not None:
-        #     return render_template('explore.html', list=restaurants)
-        # else:
-        rests = Restaurants("")
-        restaurants = rests.get_all()
-        restaurants = add_user_prefs(restaurants)
-        session['restaurants'] = restaurants
-        return render_template('explore.html', list = restaurants)
+        #Same logic as reireviing all restaurants from explore_restaurants function
+        return redirect(url_for('explore_restaurants'))
     return redirect(url_for('login'))
     # redirect to the same page
     # check if restaurant liked or not
