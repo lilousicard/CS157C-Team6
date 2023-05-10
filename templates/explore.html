@@ -37,6 +37,7 @@
               <li>
                 <div class="rest-item">
                     <div class="rest-details">
+                        <img src = {{restaurant.get('image_path')}}/>
                         <h3> <a href="restaurant/{{ restaurant.get('name') }}">{{ restaurant.get('name') }}</a></h3>
                         <p class="rests-city">{{ city_name }}</p><br>
                     </div>
@@ -57,6 +58,7 @@
               <li>
                 <div class="rest-item">
                   <div class="rest-details">
+                    <img src = {{rests.get('image_path')}}/>
                     <h3> <a href = "restaurant/{{ rests.get('name') }}">{{ rests.get('name') }}</a></h3>
                     <p class="rests-city">{{ cust_city }}</p><br>
                   </div>

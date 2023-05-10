@@ -42,3 +42,8 @@ body {
     margin-bottom: 30px;
     color: #ea8c55;
 }
+
+.rest-details img{
+	height: 150px;
+	width: 150px;
+}
