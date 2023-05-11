@@ -72,3 +72,18 @@ class Restaurants:
         restau_details['reviews'] = reviews
         return restau_details
 
+    def get_rests_friends_like(self, user_email):
+        restau_details = []
+
+        query = '''
+                MATCH (a:Customer{email: '%s'})-[:Friends]->(b:Customer)-[r:Likes]->(c:Restaurant)-[:Location]->(d:City)
+                      RETURN c,d.name;''' % (user_email)
+        rest_list = graph.run(query).data()
+
+        for x in rest_list:
+            rests = {}
+            rests['name'] = x['c']['name']
+            rests['image_path'] = x['c']['image_path']
+            rests['city'] = x['d.name']
+            restau_details.append(rests)
+        return restau_details
