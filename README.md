@@ -10,7 +10,7 @@
 
 Neo4j (https://neo4j.com/)
 
-<img width="764" alt="Screenshot 2023-04-07 at 12 17 02 PM" src="https://user-images.githubusercontent.com/11585585/230664884-a2bc9c0b-74ab-4ea9-ac47-5e16281ffc3c.png">
+<img width="871" alt="Screenshot 2023-05-11 at 12 41 44 PM" src="https://github.com/lilousicard/CS157C-Team6/assets/11585585/405fa9c0-2f9a-49a4-bf6c-fbf5ed239e5b">
  
 Node Type
 
