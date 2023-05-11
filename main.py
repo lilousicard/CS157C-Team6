@@ -203,6 +203,8 @@ def city():
 
 ######### Restaurant specific functions ############
 
+
+
 @flask_app.route('/explore')
 def explore_restaurants():
     user = session.get('user')
@@ -224,11 +226,16 @@ def explore_restaurants():
 
         rest_in_city = [r for r, c in rests_to_city.items() if c == cust_city]
         rest_in_city = add_user_prefs(rest_in_city)
+        print(rest_in_city)
         print(f"Got rests in city: {time.time()-start_time} seconds")
+
+        rests_friends_like = Restaurants("").get_rests_friends_like(user);
+        rests_friends_like = add_user_prefs(rests_friends_like)
+        print(rests_friends_like)
 
         # restaurants = [{"name": "First"}, {"name": "Second"}]
         return render_template('explore.html', rests_to_city=rests_to_city,
-                               city_rests=rest_in_city, cust_city=cust_city)
+                               city_rests=rest_in_city, cust_city=cust_city, rests_friends_like=rests_friends_like)
     return redirect(url_for('login'))
 
 
