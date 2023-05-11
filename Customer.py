@@ -36,8 +36,11 @@ class Customer:
             graph.create(cust)
             # create city node if not exists
             city_node = matcher.match("City", name=city).first()
+
             if not city_node:
-                new_city = Node("City", name=city)
+                country = params.get('country')
+                state = params.get('state')
+                new_city = Node("City", name=city, country=country, state=state)
                 graph.create(new_city)
                 # create Resides relationship for the new city
                 graph.create(Relationship(cust, "Reside", new_city))
@@ -128,9 +131,9 @@ class Customer:
             graph.run(delete)
             city_node = matcher.match("City", name=params['city']).first()
             if not city_node:
-                new_city = Node("City", name= params['city'])
+                new_city = Node("City", name=params['city'])
                 graph.create(new_city)
-			    # create Resides relationship for the new city
+                # create Resides relationship for the new city
                 graph.create(Relationship(cust, "Reside", new_city))
             else:
                 graph.create(Relationship(cust, "Reside", city_node))
@@ -140,7 +143,7 @@ class Customer:
         if set_clauses:
             query += " SET " + ", ".join(set_clauses)
             result = graph.run(query, **params)
-		    # Check if the query was successful
+            # Check if the query was successful
             return True
         else:
             # No fields to update

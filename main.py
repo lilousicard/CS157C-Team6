@@ -16,12 +16,11 @@ flask_app.config['STATIC_FOLDER'] = 'static'
 
 @flask_app.route('/')
 def index():
-	rests = Restaurants("")
-	restaurants = rests.get_all()
-	rev = Review("","","","")
-	reviews = rev.get_all_review()
-	return render_template('home.html', list = restaurants, reviewList = reviews)
-
+    rests = Restaurants("")
+    restaurants = rests.get_all()
+    rev = Review("", "", "", "")
+    reviews = rev.get_all_review()
+    return render_template('home.html', list=restaurants, reviewList=reviews)
 
 
 @flask_app.route('/register', methods=['GET', 'POST'])
@@ -36,6 +35,8 @@ def register():
         password = request.form.get('password')
         params = {
             'name': request.form.get('name'),
+            'country': request.form.get('country'),
+            'state': request.form.get('state'),
             'city': request.form.get('city'),
             'password': password,
             'gender': request.form.get('gender'),
@@ -53,7 +54,8 @@ def register():
             return redirect(url_for('index'))
 
     return render_template('register.html')
-    
+
+
 @flask_app.route('/editProfile', methods=['GET', 'POST'])
 def edit():
     user = session.get('user')
@@ -69,10 +71,9 @@ def edit():
             if not Customer(session.get('user')).edit(params):
                 flash('There was a problem editing your info')
             else:
-	            return redirect(url_for('index'))
-        return render_template('editInfo.html', curr_user=curr_user, city_name = city_name)
+                return redirect(url_for('index'))
+        return render_template('editInfo.html', curr_user=curr_user, city_name=city_name)
     return redirect(url_for('login'))
-	
 
 
 def home():

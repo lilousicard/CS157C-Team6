@@ -9,11 +9,11 @@
       <form class="register" action="{{url_for('edit') }}" method="post" enctype="multipart/form-data">
         <h1>Edit Your Profile</h1>
         <label for="name"><b>Name</b></label>
-        <input id="name" type="text" value={{ curr_user['name'] }} name="name">
+        <input id="name" type="text" value="{{ curr_user.get('name') }}" name="name">
         <label for="city"><b>City</b></label>
-        <input id="city" type="text" value={{ city_name }} name="city">
+        <input id="city" type="text" value="{{ city_name }}" name="city">
         <label for="age"><b>Age</b></label>
-        <input id="age" type="number" value={{ curr_user['age'] }} name="age">
+        <input id="age" type="number" value="{{ curr_user.get('age') }}" name="age">
         <button type="submit">Edit Profile</button>
       </form>
     </div>
