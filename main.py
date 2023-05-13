@@ -100,7 +100,7 @@ def login():
 def account():
     curr_user = models.get_customer(session.get('user'))
     user_friends = Customer(session.get('user')).get_num_friends()
-    review_list = Customer(session.get('user')).get_review();
+    review_list = Customer(session.get('user')).get_review()
     return render_template('account.html', curr_user=curr_user,
                            user_friends=user_friends, review = review_list)
 
